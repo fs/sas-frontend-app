@@ -1,18 +1,11 @@
 ## Summary
 
-_Provide a short overview._
-
 ### Screenshot
-
-_Add a screenshot in case of UI changes._
 
 ## How this was tested?
 
-_Provide a plan down below to manually test introduced functionality._
-
 ### List of steps to manually test introduced functionality:
-- Log in
-- Go to http://localhost:5100
+- Go to http://localhost:3000
 
 ## Checklist
 
