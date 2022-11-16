@@ -1,5 +1,5 @@
-# Project Name
+# Eat Day (working name; subject to change)
 
-## Subtitle 1
+## Product Features
 
-Description placeholder
+(WIP: Details Coming Soon)
