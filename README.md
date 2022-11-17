@@ -12,13 +12,17 @@ The things our app can do to help you on your adventure:
 * Plan a cheat day for you
 * (WIP: More Features Coming Soon)
 
+## Cloning Repo
+
+```git clone https://github.com/fs/sas-frontend-app.git```
+
 ## Launching Server
 
-To launch the app, run the following comand in the CMD tool:
+After cloning, you need to install dependencies from ```package.json```.  Run the following commands in the CMD tool:
 
-```
-npm start
-```
+```npm install``` to install required node modules;
+
+```npm start``` to run the server
 
 The server will start and the app will be opened in a new tab in your browser.
 You can stop the server by simply closing the terminal in which you started it.
