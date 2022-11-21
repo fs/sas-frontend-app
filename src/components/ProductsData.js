@@ -1,4 +1,8 @@
+import defPic from '../img/default_pictire.png';
+
 const ProductData = ({ title, nutrients, image }) => {
+    if(!image)
+        image=defPic;
   return (
     <div>
         <h2>{title}</h2>
