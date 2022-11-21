@@ -1,9 +1,9 @@
 import './App.css';
-import GetProducts from './GetProducts';
+import GetRecipes from './GetRecipes';
 
 function App() {
   return(
-    GetProducts()
+    GetRecipes()
   )
 }
 
