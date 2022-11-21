@@ -10,22 +10,21 @@ function GetProducts() {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
   const [query, setQuery] = useState();
-  
+  const ingrList='chicken|potato|rice|orange|meat|pork|spaghetti|carrot|onion|cucumber'
+  ;
   const getProducts = async()=>{
     await axios.get(apiURL, {
         params:
         {
           app_id: 'b18c1cfc',
           app_key: 'b93be83ead71c225105bd41f78d1dab6',
-          ingr: 'chicken potato'
+          ingr: ingrList
         }
     })
     .then((resp) => {
-        setProducts((resp.data.parsed));
-        console.log((resp.data.parsed));
-        console.log((resp.data.parsed)[0].food.label);
-        console.log((resp.data.parsed)[0].food.image);
-        console.log((resp.data.parsed)[0].food.category);
+        setProducts((resp.data.hints));
+        console.log((resp));
+        console.log((resp.data.hints));
       })
       .catch(error => {
         console.error('I failed', error);
@@ -51,7 +50,7 @@ if(error)
           <ProductsData
             key={product.food.foodId}
             title={product.food.label}
-            category={product.food.category}
+            nutrients={product.food.nutrients}
             image={product.food.image}
           />
         ))}
