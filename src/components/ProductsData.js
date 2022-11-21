@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const ProductData = ({ title, category, image }) => {
+const ProductData = ({ key, title, category, image }) => {
     return (
         <div className="product">
             <ol>

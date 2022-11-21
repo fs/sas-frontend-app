@@ -8,6 +8,7 @@ function App() {
   const apiURL = 'https://api.edamam.com/api/food-database/v2/parser?';
 
   const [products, setProducts] = useState([]);
+  
   const [error, setError] = useState(null);
   useEffect(() => {
     const resp = axios.get(apiURL, {
@@ -19,7 +20,8 @@ function App() {
       }
     })
       .then((resp) => {
-        setProducts((resp.data.parsed)[0].food);
+        setProducts((resp.data.parsed));
+        console.log((resp.data.parsed));
         console.log((resp.data.parsed)[0].food.label);
         console.log((resp.data.parsed)[0].food.image);
         console.log((resp.data.parsed)[0].food.category);
@@ -35,9 +37,10 @@ function App() {
     <div>
         {products.map((product) => (
           <ProductsData
-            title={product.label}
-            category={product.category}
-            image={product.image}
+            key={product.food.foodId}
+            title={product.food.label}
+            category={product.food.category}
+            image={product.food.image}
             
           />
         ))}
