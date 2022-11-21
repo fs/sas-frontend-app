@@ -18,7 +18,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "husky install"
+    "prepare": "husky install",
+		"lint":"npx eslint --cache --fix .",
+		"prettify":"npx prettier --write ."
   },
   "browserslist": {
     "production": [
