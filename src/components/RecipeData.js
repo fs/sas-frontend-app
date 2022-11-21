@@ -1,8 +1,6 @@
-import React from "react";
-
 const RecipeData = ({ title, image, ingredients }) => {
-  return (
-    <div >
+    return (
+        <div >
       <h1>{title}</h1>
       <ol>
         {ingredients.map((ingredient) => (
