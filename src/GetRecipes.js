@@ -13,7 +13,7 @@ function GetRecipes() {
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
   const [query, setQuery] = useState();
-  const getRecipes = async () => {
+  const getRecipes = async (ingr) => {
     await axios.get(apiURL, {
       params:
       {
@@ -39,7 +39,7 @@ function GetRecipes() {
   }
 
   useEffect(() => {
-    getRecipes();
+    getRecipes(ingr);
   }, [query]);
 
   if (error)
