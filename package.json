@@ -20,8 +20,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "husky install",
-    "lint": "npx eslint --cache --fix --ext .js,.jsx .",
-    "prettify": "npx prettier --write ."
+    "lint": "npx eslint --fix --ext .js,.jsx ."
   },
   "browserslist": {
     "production": [
@@ -49,7 +48,6 @@
     "prettier": "2.7.1"
   },
   "lint-staged": {
-    "*.{js,jsx}": "eslint --cache --fix",
-    "*.{js,jsx,css,md}": "prettier --write --ignore-unknown"
+    "*.{js,jsx}": "eslint --fix"
   }
 }
