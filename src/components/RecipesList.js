@@ -1,22 +1,15 @@
 import { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import RecipeItem from './RecipeItem';
 import fetchRecipes from '../api/fetchRecipes';
 
-const List = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  gap: 1rem;
-  flex-wrap: wrap;
-  width: 100%;
-`;
+import { List } from './styles';
 
 const RecipesList = () => {
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchReciepsList = async () => {
+    const fetchRecipesList = async () => {
       try {
         const recipesData = await fetchRecipes();
         setRecipes(recipesData);
@@ -26,9 +19,8 @@ const RecipesList = () => {
       }
     };
 
-    fetchReciepsList()
+    fetchRecipesList()
   }, [])
-
 
   if (error) {
     return (
