@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const List = styled.div`
   display: flex;
@@ -7,7 +7,6 @@ export const List = styled.div`
   flex-wrap: wrap;
   width: 100%;
 `;
-
 
 export const ListItem = styled.div`
   width: 40%;

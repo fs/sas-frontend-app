@@ -1,9 +1,9 @@
-import defPic from '../img/default_pictire.png';
+import React from "react";
+import defPic from "../img/default_pictire.png";
 
-import { ListItem  } from './styles';
+import { ListItem } from "./styles";
 
 const RecipeItem = ({ title, ingredients, image }) => {
-
   return (
     <ListItem>
       <h2>{title}</h2>
@@ -14,7 +14,7 @@ const RecipeItem = ({ title, ingredients, image }) => {
 
       <ol>
         {ingredients.map((ingredient) => (
-          <li>{ingredient}</li>
+          <li key={ingredient}>{ingredient}</li>
         ))}
       </ol>
     </ListItem>

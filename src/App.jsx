@@ -1,10 +1,8 @@
 import React from "react";
-import RecipesList from './components/RecipesList';
+import RecipesList from "./components/RecipesList";
 
 const App = () => {
-  return (
-    <RecipesList />
-  )
-}
+  return <RecipesList />;
+};
 
 export default App;
