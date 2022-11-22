@@ -1,8 +1,10 @@
 import React from "react";
-import "./App.css";
+import RecipesList from './components/RecipesList';
 
 const App = () => {
-  return <div>empty page</div>;
-};
+  return (
+    <RecipesList />
+  )
+}
 
 export default App;
