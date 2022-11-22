@@ -20,7 +20,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "npx eslint --fix --ext .js,.jsx ."
+    "lint": "npx eslint --fix --ext .js,.jsx .",
+    "prepare": "husky install"
   },
   "browserslist": {
     "production": [
@@ -43,7 +44,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "husky": "^8.0.2",
+    "husky": "^8.0.0",
     "lint-staged": "^13.0.3",
     "prettier": "2.7.1"
   },
