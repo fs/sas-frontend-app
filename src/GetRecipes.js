@@ -8,7 +8,7 @@ function GetRecipes() {
   var ingr='';
   //ask user to write ingredients
 
-  const apiURL = 'process.env.REACT_APP_RECIPES_URI';
+  const apiURL = process.env.REACT_APP_RECIPES_URI;
 
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
@@ -17,8 +17,8 @@ function GetRecipes() {
     await axios.get(apiURL, {
       params:
       {
-        app_id: 'process.env.REACT_APP_RECIPES_APP_ID',
-        app_key: 'process.env.REACT_APP_RECIPES_APP_KEY',
+        app_id: process.env.REACT_APP_RECIPES_APP_ID,
+        app_key: process.env.REACT_APP_RECIPES_APP_KEY,
         type: 'public',
         random: true,
         diet: 'low-fat',
