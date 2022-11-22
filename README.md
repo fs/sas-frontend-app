@@ -8,9 +8,9 @@ A handy web-based app for creating diet plans with yummy cheat days so you can s
 
 The things our app can do to help you on your adventure:
 
--   Fetch delicious low-calorie recipes
--   Plan a cheat day for you
--   (WIP: More Features Coming Soon)
+- Fetch delicious low-calorie recipes
+- Plan a cheat day for you
+- (WIP: More Features Coming Soon)
 
 ## Cloning Repo
 
