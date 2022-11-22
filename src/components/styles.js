@@ -13,5 +13,5 @@ export const ListItem = styled.div`
   padding: 1rem;
   background: #fefefe;
   border-radius: 0.5rem;
-  box-shadow: 1px 1px 3px #666;
+  box-shadow: 0 0 3px #999;
 `;
