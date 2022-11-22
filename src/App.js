@@ -1,9 +1,8 @@
-import './App.css';
-import GetRecipes from './GetRecipes';
+import RecipesList from './components/RecipesList';
 
-function App() {
-  return(
-    GetRecipes()
+const App = () => {
+  return (
+    <RecipesList />
   )
 }
 
