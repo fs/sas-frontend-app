@@ -1,9 +1,9 @@
-import './App.css';
+import RecipesList from './components/RecipesList';
 
-function App() {
+const App = () => {
   return (
-    <div>empty page</div>
-  );
+    <RecipesList />
+  )
 }
 
 export default App;
