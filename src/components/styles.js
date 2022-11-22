@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const List = styled.div`
   display: flex;
@@ -8,11 +8,10 @@ export const List = styled.div`
   width: 100%;
 `;
 
-
 export const ListItem = styled.div`
   width: 40%;
   padding: 1rem;
   background: #fefefe;
   border-radius: 0.5rem;
-  box-shadow: 1px 1px 3px #666;
+  box-shadow: 0 0 3px #999;
 `;

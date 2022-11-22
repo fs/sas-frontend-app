@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import RecipeItem from './RecipeItem';
-import fetchRecipes from '../api/fetchRecipes';
+import React, { useEffect, useState } from "react";
+import RecipeItem from "./RecipeItem";
+import fetchRecipes from "../api/fetchRecipes";
 
-import { List } from './styles';
+import { List } from "./styles";
 
 const RecipesList = () => {
   const [recipes, setRecipes] = useState([]);
@@ -13,26 +13,22 @@ const RecipesList = () => {
       try {
         const recipesData = await fetchRecipes();
         setRecipes(recipesData);
-      } catch (error) {
-        console.error('I failed', error);
-        setError(error);
+      } catch (err) {
+        console.error("I failed", err);
+        setError(err);
       }
     };
 
-    fetchRecipesList()
-  }, [])
+    fetchRecipesList();
+  }, []);
 
   if (error) {
-    return (
-      <div>
-        Ошибка получения данных
-      </div>
-    )
+    return <div>Ошибка получения данных</div>;
   }
 
   return (
     <List>
-      {recipes.map(( { recipe }) => (
+      {recipes.map(({ recipe }) => (
         <RecipeItem
           key={recipe.label}
           title={recipe.label}
@@ -42,6 +38,6 @@ const RecipesList = () => {
       ))}
     </List>
   );
-}
+};
 
 export default RecipesList;
