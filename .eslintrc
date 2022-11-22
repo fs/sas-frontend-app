@@ -4,8 +4,8 @@
 		"es2021": true
 	},
 	"extends": [
-		"plugin:react/recommended",
 		"airbnb",
+		"plugin:react/recommended",
 		"prettier"
 	],
 	"overrides": [],
@@ -14,9 +14,25 @@
 		"sourceType": "module"
 	},
 	"plugins": [
+		"react",
 		"prettier"
 	],
 	"rules": {
-		"prettier/prettier": "error"
+		"prettier/prettier": "error",
+		"react/function-component-definition": [
+			"error",
+			{
+				"namedComponents": [
+					"arrow-function"
+				]
+			}
+		],
+		"arrow-body-style": 0,
+		"no-console": [
+      "error",
+      {
+        "allow": ["warn", "error"]
+      }
+    ]
 	}
 }
