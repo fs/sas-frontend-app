@@ -24,7 +24,7 @@ export const ListItem = styled.div`
 
 export const ItemImage = styled.img`
   height: 140px;
-  width: 280px;
+  width: 100%;
   object-fit: cover;
   border-radius: 5%;
 `;
