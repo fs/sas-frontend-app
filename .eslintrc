@@ -16,7 +16,7 @@
       "error",
       {
         "namedComponents": ["arrow-function"],
-				"endOfLine":"auto"
+        "endOfLine":"auto"
       }
     ],
     "react/prop-types": 0,
