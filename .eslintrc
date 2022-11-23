@@ -15,8 +15,7 @@
     "react/function-component-definition": [
       "error",
       {
-        "namedComponents": ["arrow-function"],
-        "endOfLine":"auto"
+        "namedComponents": ["arrow-function"]
       }
     ],
     "react/prop-types": 0,
