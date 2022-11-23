@@ -11,7 +11,7 @@
   },
   "plugins": ["react", "prettier"],
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": ["error",{endOfLine:"off"}],
     "react/function-component-definition": [
       "error",
       {
