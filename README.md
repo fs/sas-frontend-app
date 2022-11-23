@@ -20,7 +20,7 @@ The things our app can do to help you on your adventure:
 
 After cloning, you need to install dependencies from `package.json`. Run the following commands in the CMD tool:
 
-`npm install` to install required node modules;
+`npm ci` to install required node modules;
 
 `npm start` to run the server
 
