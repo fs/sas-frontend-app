@@ -1,22 +1,14 @@
 import React from "react";
 import defPic from "../img/default_pictire.png";
 
-import { ListItem } from "./styles";
+import { ItemImage, ListItem } from "./styles";
 
-const RecipeItem = ({ title, ingredients, image }) => {
+const RecipeItem = ({ title, image }) => {
   return (
     <ListItem>
-      <h2>{title}</h2>
+      <ItemImage src={image || defPic} alt="" />
 
-      <img src={image || defPic} alt="" />
-
-      <h3>Ingredients:</h3>
-
-      <ol>
-        {ingredients.map((ingredient) => (
-          <li key={ingredient}>{ingredient}</li>
-        ))}
-      </ol>
+      <h4>{title}</h4>
     </ListItem>
   );
 };

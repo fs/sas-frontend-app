@@ -32,7 +32,6 @@ const RecipesList = () => {
         <RecipeItem
           key={recipe.label}
           title={recipe.label}
-          ingredients={recipe.ingredientLines}
           image={recipe.image}
         />
       ))}
