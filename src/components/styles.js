@@ -2,15 +2,33 @@ import styled from "styled-components";
 
 export const List = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  gap: 20px 20px;
-  grid-template-areas:
-    ". . . ."
-    ". . . ."
-    ". . . ."
-    ". . . ."
-    ". . . .";
+  @media (max-width: 1500px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-areas:
+      ". ."
+      ". ."
+      ". ."
+      ". ."
+      ". ."
+      ". ."
+      ". ."
+      ". ."
+      ". ."
+      ". .";
+    gap: 20px 40px;
+  }
+  @media (min-width: 1500px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      ". . . ."
+      ". . . ."
+      ". . . ."
+      ". . . ."
+      ". . . .";
+    gap: 20px 20px;
+  }
   padding: 78px;
 `;
 
@@ -23,6 +41,7 @@ export const ListItem = styled.div`
 `;
 
 export const ItemTitle = styled.h4`
+  overflow: hidden;
   height: 40px;
   margin: 8px 0px;
 `;
