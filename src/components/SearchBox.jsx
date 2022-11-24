@@ -89,7 +89,7 @@ const SearchButton = styled.button`
 
 const placeholdercalLimit = 2000;
 
-const placeholderIngr = "Chicken, salmon, cream cheese";
+const placeholderIngr = "Chicken salmon cream cheese";
 
 async function search(ingredient = "", caloriesLimit = 0) {
   const trimmedIngr = ingredient.replaceAll(",", "");
