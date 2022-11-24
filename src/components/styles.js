@@ -29,4 +29,13 @@ export const ItemImage = styled.img`
   border-radius: 5%;
 `;
 
-export const ItemInfo = styled.div``;
+export const ItemInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+export const InfoIcon = styled.img`
+  height: 24px;
+  width: 24px;
+`;
