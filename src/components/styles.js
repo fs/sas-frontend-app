@@ -22,6 +22,11 @@ export const ListItem = styled.div`
   background-color: #e7f9fd;
 `;
 
+export const ItemTitle = styled.h4`
+  height: 40px;
+  margin: 8px 0px;
+`;
+
 export const ItemImage = styled.img`
   height: 140px;
   width: 100%;
@@ -38,4 +43,8 @@ export const ItemInfo = styled.div`
 export const InfoIcon = styled.img`
   height: 24px;
   width: 24px;
+`;
+
+export const InfoText = styled.p`
+  margin: 8px 0px;
 `;

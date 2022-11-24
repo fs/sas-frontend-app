@@ -3,7 +3,14 @@ import defPic from "../img/default_pictire.png";
 import dishIcon from "../icons/main-course.png";
 import clockIcon from "../icons/clock.png";
 
-import { ItemImage, ItemInfo, ListItem, InfoIcon } from "./styles";
+import {
+  ItemImage,
+  ItemInfo,
+  ListItem,
+  InfoIcon,
+  InfoText,
+  ItemTitle,
+} from "./styles";
 
 const RecipeItem = ({ title, image, cookingTime, dishType }) => {
   let cookingTimeStr = "";
@@ -18,15 +25,15 @@ const RecipeItem = ({ title, image, cookingTime, dishType }) => {
     <ListItem>
       <ItemImage src={image || defPic} alt="" />
 
-      <h4>{title}</h4>
+      <ItemTitle>{title}</ItemTitle>
 
       <ItemInfo>
         <InfoIcon src={dishIcon} alt="dishIcon" />
-        <p>Dish type: {dishType}</p>
+        <InfoText>Dish type: {dishType[0]}</InfoText>
       </ItemInfo>
       <ItemInfo>
         <InfoIcon src={clockIcon} alt="clockIcon" />
-        <p>Cooking time: {cookingTimeStr}</p>
+        <InfoText>Cooking time: {cookingTimeStr}</InfoText>
       </ItemInfo>
     </ListItem>
   );
