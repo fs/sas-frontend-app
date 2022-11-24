@@ -111,8 +111,8 @@ const SearchBox = () => {
     <SearchDiv>
       <IngrInput
         value={ingrText}
-        placeholder={placeholderIngr}
-        onInput={(e) => setIngr(e.target.value)} // placeholder ingredient limit to display
+        placeholder={placeholderIngr} // placeholder ingredient limit to display
+        onInput={(e) => setIngr(e.target.value)}
       />
       <CalInput
         value={cals}
