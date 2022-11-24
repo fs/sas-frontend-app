@@ -33,6 +33,8 @@ const RecipesList = () => {
           key={recipe.label}
           title={recipe.label}
           image={recipe.image}
+          cookingTime={recipe.totalTime}
+          dishType={recipe.dishType}
         />
       ))}
     </List>

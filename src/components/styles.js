@@ -28,3 +28,5 @@ export const ItemImage = styled.img`
   object-fit: cover;
   border-radius: 5%;
 `;
+
+export const ItemInfo = styled.div``;
