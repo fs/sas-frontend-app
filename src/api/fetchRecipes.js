@@ -4,9 +4,8 @@ const apiID = process.env.REACT_APP_RECIPES_APP_ID;
 const apiKey = process.env.REACT_APP_RECIPES_APP_KEY;
 
 const recipesUrl = "/recipes/v2";
-const ingr = "";
 
-const fetchRecieps = async () => {
+const fetchRecieps = async (ingr, cals) => {
   const params = {
     app_id: apiID,
     app_key: apiKey,
@@ -14,6 +13,7 @@ const fetchRecieps = async () => {
     random: true,
     diet: "low-fat",
     q: ingr,
+    calories: `0-${cals}`,
   };
 
   const data = await apiInstance.get(recipesUrl, { params });
