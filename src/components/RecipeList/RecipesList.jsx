@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import RecipeItem from "./RecipeItem";
-import fetchRecipes from "../api/fetchRecipes";
+import RecipeItem from "../RecipeItem/RecipeItem";
+import fetchRecipes from "../../api/fetchRecipes";
 
-import { List } from "./styles";
+import List from "./styles";
 
 const RecipesList = () => {
   const [recipes, setRecipes] = useState([]);
