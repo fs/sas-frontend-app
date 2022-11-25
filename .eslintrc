@@ -25,6 +25,12 @@
       {
         "allow": ["warn", "error"]
       }
+    ],
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowTernary": true
+      }
     ]
   }
 }

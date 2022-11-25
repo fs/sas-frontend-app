@@ -11,14 +11,15 @@ import defPic from "../../img/default_pictire.png";
 import dishIcon from "../../icons/main-course.png";
 import clockIcon from "../../icons/clock.png";
 
-const RecipeItem = ({ title, image, cookingTime, dishType }) => {
+const RecipeItem = ({ title, image, cookingTime, dishTypes }) => {
   let cookingTimeStr = "";
+  let dish = "";
 
-  if (cookingTime === 0) {
-    cookingTimeStr = "Not available";
-  } else {
-    cookingTimeStr = `${cookingTime} minutes`;
-  }
+  cookingTime === 0
+    ? (cookingTimeStr = "Not available")
+    : (cookingTimeStr = `${cookingTime} minutes`);
+
+  dishTypes.length > 0 ? ([dish] = dishTypes) : (dish = "Not available");
 
   return (
     <ListItem>
@@ -28,7 +29,7 @@ const RecipeItem = ({ title, image, cookingTime, dishType }) => {
 
       <ItemInfo>
         <InfoIcon src={dishIcon} alt="dishIcon" />
-        <InfoText>Dish type: {dishType[0]}</InfoText>
+        <InfoText>Dish type: {dish}</InfoText>
       </ItemInfo>
       <ItemInfo>
         <InfoIcon src={clockIcon} alt="clockIcon" />
