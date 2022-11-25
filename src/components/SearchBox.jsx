@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import fetchRecieps from "../api/fetchRecipes";
 
+const placeholdercalLimit = 2000;
+
+const placeholderIngredientList = "Chicken salmon cream cheese";
+
 const SearchDiv = styled.div`
-  width: 187px+393px+20px+130px+20px;
+  width: 100%;
   height: 39px;
   left: 0px;
   top: 0px;
@@ -11,7 +15,7 @@ const SearchDiv = styled.div`
   display: flex;
 `;
 
-const IngrInput = styled.input`
+const SearchTextInput = styled.input`
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -20,6 +24,7 @@ const IngrInput = styled.input`
   border-color: rgba(0, 0, 0, 0);
 
   width: 393px;
+  height: 100%;
 
   background: #d0edeb;
   border-radius: 10px;
@@ -29,6 +34,7 @@ const IngrInput = styled.input`
   :focus {
     border-color: rgba(0, 0, 0, 0);
     outline: none;
+    color: rgba(0, 0, 0, 0.8);
   }
 
   line-height: 28px;
@@ -37,34 +43,9 @@ const IngrInput = styled.input`
   color: rgba(0, 0, 0, 0.6);
 `;
 
-const CalInput = styled.input`
-  border-color: rgba(0, 0, 0, 0);
-  background-color: rgba(0, 0, 0, 0);
-
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-
-  line-height: 28px;
-  text-align: center;
-
-  margin: 0px 10px 0px;
-
-  background: #d0edeb;
-  border-radius: 10px;
-
-  color: rgba(0, 0, 0, 0.6);
-
-  :focus {
-    border-color: rgba(0, 0, 0, 0);
-    outline: none;
-  }
-`;
-
-const SearchButton = styled.button`
+const SearchInput = styled.input`
   width: 103px;
-  height: 39px;
+  height: 100%;
   left: 0px;
   top: 0px;
 
@@ -87,10 +68,6 @@ const SearchButton = styled.button`
   cursor: pointer;
 `;
 
-const placeholdercalLimit = 2000;
-
-const placeholderIngr = "Chicken salmon cream cheese";
-
 async function search(ingredient = "", caloriesLimit = 0) {
   const trimmedIngr = ingredient.replaceAll(",", "");
 
@@ -103,23 +80,30 @@ async function search(ingredient = "", caloriesLimit = 0) {
   console.log(res);
 }
 
+const submit = (event, ingredientText, calories) => {
+  event.preventDefault();
+  search(ingredientText, calories);
+};
+
 const SearchBox = () => {
-  const [ingrText, setIngr] = useState();
-  const [cals, setCals] = useState();
+  const [ingredientText, setIngredient] = useState("");
+  const [calories, setCalories] = useState("");
 
   return (
     <SearchDiv>
-      <IngrInput
-        value={ingrText}
-        placeholder={placeholderIngr} // placeholder ingredient limit to display
-        onInput={(e) => setIngr(e.target.value)}
-      />
-      <CalInput
-        value={cals}
-        placeholder={`${placeholdercalLimit} kcal`} // placeholder calorie limit to display
-        onInput={(e) => setCals(e.target.value)}
-      />
-      <SearchButton onClick={() => search(ingrText, cals)}>Search</SearchButton>
+      <form onSubmit={(e) => submit(e, ingredientText, calories)}>
+        <SearchTextInput
+          value={ingredientText}
+          placeholder={placeholderIngredientList} // placeholder ingredient limit to display
+          onInput={(e) => setIngredient(e.target.value)}
+        />
+        <SearchTextInput
+          value={calories}
+          placeholder={`${placeholdercalLimit} kcal`} // placeholder calorie limit to display
+          onInput={(e) => setCalories(e.target.value)}
+        />
+        <SearchInput type="submit" />
+      </form>
     </SearchDiv>
   );
 };
