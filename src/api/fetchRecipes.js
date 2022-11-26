@@ -5,15 +5,15 @@ const apiKey = process.env.REACT_APP_RECIPES_APP_KEY;
 
 const recipesUrl = "/recipes/v2";
 
-const fetchRecieps = async (ingr, cals) => {
+const fetchRecipes = async (ingredients, calories) => {
   const params = {
     app_id: apiID,
     app_key: apiKey,
     type: "public",
     random: true,
     diet: "low-fat",
-    q: ingr,
-    calories: `0-${cals}`,
+    q: ingredients,
+    calories: `0-${calories}`,
   };
 
   const data = await apiInstance.get(recipesUrl, { params });
@@ -21,4 +21,4 @@ const fetchRecieps = async (ingr, cals) => {
   return data?.data?.hits;
 };
 
-export default fetchRecieps;
+export default fetchRecipes;
