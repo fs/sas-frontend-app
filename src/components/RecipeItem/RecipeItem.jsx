@@ -7,9 +7,9 @@ import {
   InfoText,
   ItemTitle,
 } from "./styles";
-import defPic from "../../img/default_pictire.png";
-import dishIcon from "../../icons/main-course.png";
-import clockIcon from "../../icons/clock.png";
+import defPic from "../../img/defaultPicture.png";
+import dishIcon from "../../icons/dishIcon.png";
+import clockIcon from "../../icons/clockIcon.png";
 
 const RecipeItem = ({ title, image, cookingTime, dishTypes }) => {
   let cookingTimeStr = "";
