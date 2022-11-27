@@ -29,16 +29,18 @@ const SearchBox = () => {
 
   return (
     <SearchDiv>
-      <form onSubmit={(e) => submit(e, ingredientText, calories)}>
+      <form onSubmit={(event) => submit(event, ingredientText, calories)}>
         <SearchTextInput
           value={ingredientText}
           placeholder={placeholderIngredientList}
           onInput={(e) => setIngredient(e.target.value)}
+          width={393}
         />
         <SearchTextInput
           value={calories}
           placeholder={`${placeholderCaloriesLimit} kcal`}
           onInput={(e) => setCalories(e.target.value)}
+          width={187}
         />
         <SearchInput type="submit" />
       </form>
