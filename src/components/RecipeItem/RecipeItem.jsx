@@ -7,11 +7,11 @@ import {
   InfoText,
   ItemTitle,
 } from "./styles";
-import defPic from "../../img/defaultPicture.png";
-import dishIcon from "../../icons/dishIcon.png";
-import clockIcon from "../../icons/clockIcon.png";
+import defaultPic from "../../img/defaultPicture.png";
+import dishIcon from "../../icons/dishIcon.svg";
+import clockIcon from "../../icons/clockIcon.svg";
 
-const RecipeItem = ({ title, image, cookingTime, dishTypes }) => {
+const RecipeItem = ({ title, image = defaultPic, cookingTime, dishTypes }) => {
   let cookingTimeStr = "";
   let dish = "";
 
@@ -23,7 +23,7 @@ const RecipeItem = ({ title, image, cookingTime, dishTypes }) => {
 
   return (
     <ListItem>
-      <ItemImage src={image || defPic} alt="" />
+      <ItemImage src={image} alt="" />
 
       <ItemTitle>{title}</ItemTitle>
 
