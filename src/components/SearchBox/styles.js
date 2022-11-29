@@ -27,13 +27,13 @@ const SearchTextInput = styled.input`
 `;
 
 const SearchInput = styled.input`
-  font-family: "Inter";
   width: 103px;
   height: 100%;
   background-color: #0bbdb1;
   border-radius: 10px;
   border: none;
 
+  font-family: "Inter";
   font-weight: 400;
   font-size: 16px;
   text-align: center;
