@@ -1,4 +1,3 @@
-import React from "react";
 import RecipesList from "./components/RecipesList";
 
 const App = () => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { SearchDiv, SearchTextInput, SearchInput } from "./styles";
 import fetchRecipes from "../../api/fetchRecipes";
 
