@@ -1,8 +1,8 @@
 import React from "react";
-import SearchBox from "./components/SearchBox";
+import RecipesList from "./components/RecipesList";
 
 const App = () => {
-  return <SearchBox />;
+  return <RecipesList />;
 };
 
 export default App;
