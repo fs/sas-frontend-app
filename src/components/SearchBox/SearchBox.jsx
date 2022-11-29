@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { SearchDiv, SearchTextInput, SearchInput } from "./styles";
 import fetchRecipes from "../../api/fetchRecipes";
 
@@ -13,7 +13,7 @@ const search = async (ingredient = "", caloriesLimit = 0) => {
 
   if (ingredient.length < 1 || caloriesLimit < 1) return;
 
-  // TODO: remove logging after merge
+  // TODO: remove logging
   // eslint-disable-next-line no-console
   console.log(res);
 };
@@ -34,13 +34,13 @@ const SearchBox = () => {
           value={ingredientText}
           placeholder={placeholderIngredientList}
           onInput={(e) => setIngredient(e.target.value)}
-          width={393}
+          width={400}
         />
         <SearchTextInput
           value={calories}
           placeholder={`${placeholderCaloriesLimit} kcal`}
           onInput={(e) => setCalories(e.target.value)}
-          width={187}
+          width={190}
           type="number"
         />
         <SearchInput type="submit" />
