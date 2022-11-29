@@ -12,7 +12,9 @@ import clockIcon from "../../icons/clockIcon.svg";
 
 const RecipeItem = ({ title, image = defaultPic, cookingTime, dishTypes }) => {
   let cookingTimeStr = "";
-  const [dish = "Not available"] = dishTypes;
+  let dish = "";
+
+  dishTypes !== undefined ? ([dish] = dishTypes) : (dish = "Not available");
 
   cookingTime === 0
     ? (cookingTimeStr = "Not available")
