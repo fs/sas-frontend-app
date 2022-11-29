@@ -18,18 +18,18 @@ const search = async (ingredient = "", caloriesLimit = 0) => {
   console.log(res);
 };
 
-const submit = (event, ingredientText, calories) => {
-  event.preventDefault();
-  search(ingredientText, calories);
-};
-
 const SearchBox = () => {
   const [ingredientText, setIngredient] = useState("");
   const [calories, setCalories] = useState("");
 
+  const submit = (event) => {
+    event.preventDefault();
+    search(ingredientText, calories);
+  };
+
   return (
     <SearchDiv>
-      <form onSubmit={(event) => submit(event, ingredientText, calories)}>
+      <form onSubmit={submit}>
         <SearchTextInput
           value={ingredientText}
           placeholder={placeholderIngredientList}
@@ -41,6 +41,7 @@ const SearchBox = () => {
           placeholder={`${placeholderCaloriesLimit} kcal`}
           onInput={(e) => setCalories(e.target.value)}
           width={187}
+          type="number"
         />
         <SearchInput type="submit" />
       </form>
