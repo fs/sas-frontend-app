@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import RecipeItem from "./RecipeItem";
-import fetchRecipes from "../api/fetchRecipes";
+import RecipeItem from "../RecipeItem";
+import fetchRecipes from "../../api/fetchRecipes";
 
-import { List } from "./styles";
+import List from "./styles";
 
 const RecipesList = () => {
   const [recipes, setRecipes] = useState([]);
@@ -32,8 +32,9 @@ const RecipesList = () => {
         <RecipeItem
           key={recipe.label}
           title={recipe.label}
-          ingredients={recipe.ingredientLines}
           image={recipe.image}
+          cookingTime={recipe.totalTime}
+          dishTypes={recipe.dishType}
         />
       ))}
     </List>
