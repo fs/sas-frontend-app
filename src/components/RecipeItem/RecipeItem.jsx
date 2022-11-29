@@ -13,13 +13,11 @@ import clockIcon from "../../icons/clockIcon.svg";
 
 const RecipeItem = ({ title, image = defaultPic, cookingTime, dishTypes }) => {
   let cookingTimeStr = "";
-  let dish = "";
+  const [dish = "Not available"] = dishTypes;
 
   cookingTime === 0
     ? (cookingTimeStr = "Not available")
     : (cookingTimeStr = `${cookingTime} minutes`);
-
-  dishTypes.length > 0 ? ([dish] = dishTypes) : (dish = "Not available");
 
   return (
     <ListItem>
