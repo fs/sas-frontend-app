@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import RecipeItem from "../RecipeItem";
 import fetchRecipes from "../../api/fetchRecipes";
+import ModalWindow from "../ModalWindow";
 
 import List from "./styles";
 
 const RecipesList = () => {
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const fetchRecipesList = async () => {
@@ -28,6 +30,7 @@ const RecipesList = () => {
 
   return (
     <List>
+      <ModalWindow setShowModal={setShowModal} showModal={showModal} />
       {recipes.map(({ recipe }) => (
         <RecipeItem
           key={recipe.label}
@@ -35,6 +38,7 @@ const RecipesList = () => {
           image={recipe.image}
           cookingTime={recipe.totalTime}
           dishTypes={recipe.dishType}
+          onClick={() => setShowModal(true)}
         />
       ))}
     </List>

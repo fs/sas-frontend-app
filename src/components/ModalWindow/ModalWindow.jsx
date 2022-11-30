@@ -1,9 +1,9 @@
 import React from "react";
 import { ModalBackground, ModalContainer, ModalImage } from "./styles";
 
-const ModalWindow = () => {
+const ModalWindow = (showModal, setShowModal) => {
   return (
-    <ModalBackground>
+    <ModalBackground showModal={showModal} onClick={() => setShowModal(false)}>
       <ModalContainer>
         <h2>Test</h2>
         <ModalImage />

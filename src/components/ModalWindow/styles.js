@@ -8,7 +8,7 @@ export const ModalContainer = styled.div`
 
 export const ModalBackground = styled.div`
   position: fixed;
-  opacity: 0.5;
+  display: ${(props) => (props.showModal ? "block" : "none")};
 `;
 
 export const ModalImage = styled.img``;
