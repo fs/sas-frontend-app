@@ -30,7 +30,10 @@ const RecipesList = () => {
 
   return (
     <List>
-      <ModalWindow setShowModal={setShowModal} showModal={showModal} />
+      <ModalWindow
+        onClickCustom={() => setShowModal(false)}
+        showModal={showModal}
+      />
       {recipes.map(({ recipe }) => (
         <RecipeItem
           key={recipe.label}
@@ -38,7 +41,7 @@ const RecipesList = () => {
           image={recipe.image}
           cookingTime={recipe.totalTime}
           dishTypes={recipe.dishType}
-          onClick={() => setShowModal(true)}
+          onClickCustom={() => setShowModal(true)}
         />
       ))}
     </List>
