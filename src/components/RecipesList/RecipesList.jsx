@@ -11,7 +11,7 @@ const RecipesList = () => {
   useEffect(() => {
     const fetchRecipesList = async () => {
       try {
-        const recipesData = await fetchRecipes();
+        const recipesData = await fetchRecipes({});
         setRecipes(recipesData);
       } catch (err) {
         console.error("I failed", err);
