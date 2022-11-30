@@ -14,7 +14,7 @@ const RecipeItem = ({ title, image = defaultPic, cookingTime, dishTypes }) => {
   let cookingTimeStr = "";
   let dish = "";
 
-  dishTypes !== undefined ? ([dish] = dishTypes) : (dish = "Not available");
+  dishTypes === undefined ? (dish = "Not available") : ([dish] = dishTypes);
 
   cookingTime === 0
     ? (cookingTimeStr = "Not available")
