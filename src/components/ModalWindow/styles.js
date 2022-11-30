@@ -16,6 +16,7 @@ export const ModalBackground = styled.div`
   width: 100%;
   align-items: center;
   justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
 `;
 
 export const ModalImage = styled.img``;
