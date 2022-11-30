@@ -10,11 +10,14 @@ import defaultPic from "../../img/defaultPicture.png";
 import dishIcon from "../../icons/dishIcon.svg";
 import clockIcon from "../../icons/clockIcon.svg";
 
-const RecipeItem = ({ title, image = defaultPic, cookingTime, dishTypes }) => {
+const RecipeItem = ({
+  title,
+  image = defaultPic,
+  cookingTime,
+  dishTypes = [],
+}) => {
   let cookingTimeStr = "";
-  let dish = "";
-
-  dishTypes === undefined ? (dish = "Not available") : ([dish] = dishTypes);
+  const [dish = "Not available"] = dishTypes;
 
   cookingTime === 0
     ? (cookingTimeStr = "Not available")
