@@ -11,7 +11,8 @@ import defaultPic from "../../img/defaultPicture.png";
 import dishIcon from "../../icons/dishIcon.svg";
 import clockIcon from "../../icons/clockIcon.svg";
 
-const RecipeItem = ({ title, image = defaultPic, cookingTime, dishTypes }) => {
+// eslint-disable-next-line prettier/prettier
+const RecipeItem = ({ title, image = defaultPic, cookingTime, dishTypes, customOnClick }) => {
   let cookingTimeStr = "";
   let dish = "";
 
@@ -22,7 +23,7 @@ const RecipeItem = ({ title, image = defaultPic, cookingTime, dishTypes }) => {
   dishTypes !== undefined ? ([dish] = dishTypes) : (dish = "Not available");
 
   return (
-    <ListItem>
+    <ListItem onClick={customOnClick}>
       <ItemImage src={image} alt="" />
 
       <ItemTitle>{title}</ItemTitle>
