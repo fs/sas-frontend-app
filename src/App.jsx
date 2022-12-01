@@ -1,7 +1,8 @@
-import RecipesList from "./components/RecipesList";
+import MainComponent from "./components/MainComponent/MainComponent";
+// import RecipesList from "./components/RecipesList";
 
 const App = () => {
-  return <RecipesList />;
+  return <MainComponent />;
 };
 
 export default App;
