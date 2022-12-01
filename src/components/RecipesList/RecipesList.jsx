@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import RecipeItem from "../RecipeItem";
 import fetchRecipes from "../../api/fetchRecipes";
 import ModalWindow from "../ModalWindow";

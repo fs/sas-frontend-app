@@ -1,4 +1,3 @@
-import React from "react";
 import {
   ItemImage,
   ItemInfo,
@@ -11,8 +10,13 @@ import defaultPic from "../../img/defaultPicture.png";
 import dishIcon from "../../icons/dishIcon.svg";
 import clockIcon from "../../icons/clockIcon.svg";
 
-// eslint-disable-next-line prettier/prettier
-const RecipeItem = ({ title, image = defaultPic, cookingTime, dishTypes, customOnClick }) => {
+const RecipeItem = ({
+  title,
+  image = defaultPic,
+  cookingTime,
+  dishTypes = [],
+  customOnClick,
+}) => {
   let cookingTimeStr = "";
   let dish = "";
 
