@@ -1,10 +1,12 @@
 import React from "react";
 import { ModalBackground, ModalContainer, ModalImage } from "./styles";
 
-const ModalWindow = ({ showModal, customOnClick }) => {
+const ModalWindow = ({ showModal, customOnClick, modalParent }) => {
+  // eslint-disable-next-line no-console
+  console.log(modalParent);
   return (
     <ModalBackground showModal={showModal} onClick={customOnClick}>
-      <ModalContainer>
+      <ModalContainer onClick={(e) => e.stopPropagation()}>
         <h2>Test</h2>
         <ModalImage />
         <div>

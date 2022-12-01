@@ -9,6 +9,12 @@ const RecipesList = () => {
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [modalInfo, setModalInfo] = useState(null);
+
+  const setModalData = (productData) => {
+    setModalInfo(productData);
+    setShowModal(true);
+  };
 
   useEffect(() => {
     const fetchRecipesList = async () => {
@@ -33,6 +39,7 @@ const RecipesList = () => {
       <ModalWindow
         showModal={showModal}
         customOnClick={() => setShowModal(false)}
+        modalInfo={modalInfo}
       />
       {recipes.map(({ recipe }) => (
         <RecipeItem
@@ -41,7 +48,7 @@ const RecipesList = () => {
           image={recipe.image}
           cookingTime={recipe.totalTime}
           dishTypes={recipe.dishType}
-          customOnClick={() => setShowModal(true)}
+          modalData={setModalData}
         />
       ))}
     </List>

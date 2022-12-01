@@ -15,17 +15,21 @@ const RecipeItem = ({
   image = defaultPic,
   cookingTime,
   dishTypes = [],
-  customOnClick,
+  modalData,
 }) => {
   let cookingTimeStr = "";
   const [dish = "Not available"] = dishTypes;
+
+  const handleClick = () => {
+    modalData([cookingTime]);
+  };
 
   cookingTime === 0
     ? (cookingTimeStr = "Not available")
     : (cookingTimeStr = `${cookingTime} minutes`);
 
   return (
-    <ListItem onClick={customOnClick}>
+    <ListItem onClick={handleClick}>
       <ItemImage src={image} alt="" />
 
       <ItemTitle>{title}</ItemTitle>
