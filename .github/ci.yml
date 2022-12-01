@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+
+env:
+  REACT_APP_URI = "https://api.edamam.com/api/"
+  REACT_APP_RECIPES_APP_ID = "93c6f918"
+  REACT_APP_RECIPES_APP_KEY = "8a3edd882d3a82ad6b32a0d3afd513ac"
+  REACT_APP_PRODUCTS_APP_ID = "b18c1cfc"
+  REACT_APP_PRODUCTS_APP_KEY = "b93be83ead71c225105bd41f78d1dab6"
+
+jobs:	
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: "Checkout"
+      uses: actions/checkout@v2
+    - name: "Lint"
+      run: npm lint
+    - name: "Node version check"
+      uses: actions/setup-node@v2
+        with:
+          node-version: "16.x"
