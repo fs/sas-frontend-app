@@ -18,13 +18,11 @@ const RecipeItem = ({
   customOnClick,
 }) => {
   let cookingTimeStr = "";
-  let dish = "";
+  const [dish = "Not available"] = dishTypes;
 
   cookingTime === 0
     ? (cookingTimeStr = "Not available")
     : (cookingTimeStr = `${cookingTime} minutes`);
-
-  dishTypes !== undefined ? ([dish] = dishTypes) : (dish = "Not available");
 
   return (
     <ListItem onClick={customOnClick}>
