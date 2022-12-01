@@ -12,6 +12,7 @@
   "plugins": ["react", "prettier"],
   "rules": {
     "prettier/prettier": "error",
+    "react/react-in-jsx-scope": "off",
     "react/function-component-definition": [
       "error",
       {
@@ -24,6 +25,12 @@
       "error",
       {
         "allow": ["warn", "error"]
+      }
+    ],
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowTernary": true
       }
     ]
   }
