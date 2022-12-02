@@ -1,12 +1,6 @@
 import styled from "styled-components";
 
-export const ModalContainer = styled.div`
-  width: 415px;
-  height: 715px;
-  background-color: #fdebe7;
-`;
-
-export const ModalBackground = styled.div`
+const ModalBackground = styled.div`
   position: fixed;
   display: ${(props) => (props.showModal ? "flex" : "none")};
   position: absolute;
@@ -19,4 +13,4 @@ export const ModalBackground = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
 `;
 
-export const ModalImage = styled.img``;
+export default ModalBackground;

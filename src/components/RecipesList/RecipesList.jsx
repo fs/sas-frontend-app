@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import RecipeItem from "../RecipeItem";
 import fetchRecipes from "../../api/fetchRecipes";
 import ModalWindow from "../ModalWindow";
+import RecipeItemModal from "../RecipeItemModal";
 
 import List from "./styles";
 
@@ -39,8 +40,9 @@ const RecipesList = () => {
       <ModalWindow
         showModal={showModal}
         customOnClick={() => setShowModal(false)}
-        modalInfo={modalInfo}
-      />
+      >
+        <RecipeItemModal modalInfo={modalInfo} />
+      </ModalWindow>
       {recipes.map(({ recipe }) => (
         <RecipeItem
           key={recipe.label}
