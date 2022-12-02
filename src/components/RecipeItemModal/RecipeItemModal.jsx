@@ -1,14 +1,14 @@
 import React from "react";
 import { ModalContainer, ModalImage } from "./styles";
 
-const RecipeModalWindow = ({ modalInfo }) => {
+const RecipeModalWindow = ({ recipeData }) => {
   return (
     <ModalContainer onClick={(e) => e.stopPropagation()}>
       <h2>Test</h2>
       <ModalImage />
       <div>
         <p>Ingredients</p>
-        <p>{modalInfo}</p>
+        <p>{recipeData}</p>
       </div>
     </ModalContainer>
   );

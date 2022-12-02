@@ -11,17 +11,18 @@ import dishIcon from "../../icons/dishIcon.svg";
 import clockIcon from "../../icons/clockIcon.svg";
 
 const RecipeItem = ({
+  id,
   title,
   image = defaultPic,
   cookingTime,
   dishTypes = [],
-  modalData,
+  recipeData,
 }) => {
   let cookingTimeStr = "";
   const [dish = "Not available"] = dishTypes;
 
   const handleClick = () => {
-    modalData([cookingTime]);
+    recipeData(id);
   };
 
   cookingTime === 0

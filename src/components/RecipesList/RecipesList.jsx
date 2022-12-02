@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import RecipeItem from "../RecipeItem";
 import fetchRecipes from "../../api/fetchRecipes";
 import ModalWindow from "../ModalWindow";
@@ -10,10 +11,10 @@ const RecipesList = () => {
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [modalInfo, setModalInfo] = useState(null);
+  const [modalID, setModalID] = useState(null);
 
   const setModalData = (productData) => {
-    setModalInfo(productData);
+    setModalID(productData);
     setShowModal(true);
   };
 
@@ -21,7 +22,17 @@ const RecipesList = () => {
     const fetchRecipesList = async () => {
       try {
         const recipesData = await fetchRecipes();
-        setRecipes(recipesData);
+
+        const recipesList = recipesData.map(({ recipe }) => ({
+          id: uuidv4(),
+          label: recipe.label,
+          image: recipe.image,
+          cookingTime: recipe.totalTime,
+          dishTypes: recipe.dishType,
+          ingredients: recipe.ingredientLines,
+        }));
+
+        setRecipes(recipesList);
       } catch (err) {
         console.error("I failed", err);
         setError(err);
@@ -41,16 +52,16 @@ const RecipesList = () => {
         showModal={showModal}
         customOnClick={() => setShowModal(false)}
       >
-        <RecipeItemModal modalInfo={modalInfo} />
+        <RecipeItemModal recipeData={modalID} />
       </ModalWindow>
-      {recipes.map(({ recipe }) => (
+      {recipes.map((recipe) => (
         <RecipeItem
-          key={recipe.label}
+          key={recipe.id}
           title={recipe.label}
           image={recipe.image}
-          cookingTime={recipe.totalTime}
-          dishTypes={recipe.dishType}
-          modalData={setModalData}
+          cookingTime={recipe.cookingTime}
+          dishTypes={recipe.dishTypes}
+          recipeData={setModalData}
         />
       ))}
     </List>
