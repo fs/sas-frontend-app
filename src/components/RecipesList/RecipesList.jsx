@@ -32,6 +32,17 @@ const RecipesList = () => {
           ingredients: recipe.ingredientLines,
         }));
 
+        const reducedRecipesList = recipesList.reduce((newObj, objInArray) => {
+          const { id, ...rest } = objInArray;
+          return {
+            ...newObj,
+            [objInArray.id]: rest,
+          };
+        }, {});
+
+        // eslint-disable-next-line no-console
+        console.log(reducedRecipesList);
+
         setRecipes(recipesList);
       } catch (err) {
         console.error("I failed", err);
