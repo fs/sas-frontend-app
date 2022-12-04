@@ -70,7 +70,10 @@ const RecipesList = () => {
         showModal={showModal}
         customOnClick={() => setShowModal(false)}
       >
-        <RecipeItemModal recipeData={recipes[recipeID]} />
+        <RecipeItemModal
+          recipeData={recipes[recipeID]}
+          customOnClick={() => setShowModal(false)}
+        />
       </ModalWindow>
       {Object.keys(recipes).map((key) => (
         <RecipeItem

@@ -22,8 +22,6 @@ const RecipeItem = ({
   const [dish = "Not available"] = dishTypes;
 
   const handleClick = () => {
-    // eslint-disable-next-line no-console
-    console.log(id);
     recipeData(id);
   };
 
