@@ -4,11 +4,10 @@ import { ModalContainer, ModalImage } from "./styles";
 const RecipeModalWindow = ({ recipeData }) => {
   return (
     <ModalContainer onClick={(e) => e.stopPropagation()}>
-      <h2>Test</h2>
-      <ModalImage />
+      <ModalImage src={recipeData?.image} />
       <div>
         <p>Ingredients</p>
-        <p>{recipeData}</p>
+        <p>test</p>
       </div>
     </ModalContainer>
   );

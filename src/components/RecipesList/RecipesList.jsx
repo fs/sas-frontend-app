@@ -11,39 +11,46 @@ const RecipesList = () => {
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [modalID, setModalID] = useState(null);
+  const [recipeID, setRecipeID] = useState(null);
 
   const setModalData = (productData) => {
-    setModalID(productData);
+    setRecipeID(productData);
     setShowModal(true);
+  };
+
+  const mapApiResult = (result) => {
+    const mappedResult = result.map(({ recipe }) => ({
+      id: uuidv4(),
+      label: recipe.label,
+      image: recipe.image,
+      cookingTime: recipe.totalTime,
+      dishTypes: recipe.dishType,
+      ingredients: recipe.ingredientLines,
+    }));
+
+    return mappedResult;
+  };
+
+  const reduceMappedResult = (mappedResult) => {
+    const reducedResult = mappedResult.reduce((newObj, objInArray) => {
+      const { id, ...rest } = objInArray;
+      return {
+        ...newObj,
+        [objInArray.id]: rest,
+      };
+    }, {});
+
+    return reducedResult;
   };
 
   useEffect(() => {
     const fetchRecipesList = async () => {
       try {
         const recipesData = await fetchRecipes();
+        const recipesList = mapApiResult(recipesData);
+        const reducedRecipesList = reduceMappedResult(recipesList);
 
-        const recipesList = recipesData.map(({ recipe }) => ({
-          id: uuidv4(),
-          label: recipe.label,
-          image: recipe.image,
-          cookingTime: recipe.totalTime,
-          dishTypes: recipe.dishType,
-          ingredients: recipe.ingredientLines,
-        }));
-
-        const reducedRecipesList = recipesList.reduce((newObj, objInArray) => {
-          const { id, ...rest } = objInArray;
-          return {
-            ...newObj,
-            [objInArray.id]: rest,
-          };
-        }, {});
-
-        // eslint-disable-next-line no-console
-        console.log(reducedRecipesList);
-
-        setRecipes(recipesList);
+        setRecipes(reducedRecipesList);
       } catch (err) {
         console.error("I failed", err);
         setError(err);
@@ -63,15 +70,16 @@ const RecipesList = () => {
         showModal={showModal}
         customOnClick={() => setShowModal(false)}
       >
-        <RecipeItemModal recipeData={modalID} />
+        <RecipeItemModal recipeData={recipes[recipeID]} />
       </ModalWindow>
-      {recipes.map((recipe) => (
+      {Object.keys(recipes).map((key) => (
         <RecipeItem
-          key={recipe.id}
-          title={recipe.label}
-          image={recipe.image}
-          cookingTime={recipe.cookingTime}
-          dishTypes={recipe.dishTypes}
+          key={key}
+          id={key}
+          title={recipes[key].label}
+          image={recipes[key].image}
+          cookingTime={recipes[key].cookingTime}
+          dishTypes={recipes[key].dishTypes}
           recipeData={setModalData}
         />
       ))}
