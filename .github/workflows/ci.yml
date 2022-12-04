@@ -32,6 +32,6 @@ jobs:
             node-version: 16
             registry-url: https://npm.pkg.github.com/
         - run: npm ci
-        - run: npm lint
+        - run: npm run lint
           env:
             NODE_AUTH_TOKEN: ${{secrets.ENV_FOR_ACTIONS}}
