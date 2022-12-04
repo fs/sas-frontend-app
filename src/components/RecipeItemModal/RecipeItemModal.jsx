@@ -30,7 +30,7 @@ const RecipeModalWindow = ({ recipeData, customOnClick }) => {
       <InfoWrapper>
         <Ingredients>
           <h2>Ingredients</h2>
-          {recipeData.ingredients.map((ingredient, index) => (
+          {recipeData?.ingredients.map((ingredient, index) => (
             <h3 key={ingredient}>
               {index + 1}. {ingredient}
             </h3>
