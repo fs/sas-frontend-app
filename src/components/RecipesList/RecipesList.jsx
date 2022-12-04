@@ -28,6 +28,8 @@ const RecipesList = () => {
       dishType: recipe.dishType ? recipe.dishType[0] : "Not available",
       ingredients: recipe.ingredientLines,
       cuisineType: recipe.cuisineType,
+      nutrients: recipe.totalNutrients,
+      totalWeight: recipe.totalWeight,
     }));
 
     return mappedResult;

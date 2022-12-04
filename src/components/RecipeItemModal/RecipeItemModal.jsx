@@ -1,4 +1,3 @@
-/* eslint-disable react/self-closing-comp */
 import React from "react";
 import {
   ModalContainer,
@@ -13,6 +12,11 @@ import {
 import closeButtonIcon from "../../icons/closeButtonIcon.svg";
 
 const RecipeModalWindow = ({ recipeData, customOnClick }) => {
+  const totalWeight = recipeData?.totalWeight ? recipeData.totalWeight : 1;
+  const KCAL = recipeData?.nutrients.ENERC_KCAL.quantity
+    ? recipeData.nutrients.ENERC_KCAL.quantity
+    : 0;
+
   return (
     <ModalContainer onClick={(e) => e.stopPropagation()}>
       <ButtonWrapper>
@@ -40,6 +44,11 @@ const RecipeModalWindow = ({ recipeData, customOnClick }) => {
           <p>Cooking time: {recipeData?.cookingTime}</p>
           <p>Cuisine: {recipeData?.cuisineType}</p>
           <p>Dish type: {recipeData?.dishType}</p>
+          <p>Nutrients per 100 gram:</p>
+          <p>
+            Calories: {Math.round((KCAL / totalWeight) * 100)}{" "}
+            {recipeData?.nutrients.ENERC_KCAL.unit}
+          </p>
         </AdditionalInfo>
       </InfoWrapper>
     </ModalContainer>
