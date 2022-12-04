@@ -31,12 +31,16 @@ const RecipeModalWindow = ({ recipeData, customOnClick }) => {
         <Ingredients>
           <h2>Ingredients</h2>
           {recipeData?.ingredients.map((ingredient, index) => (
-            <h3 key={ingredient}>
+            <h4 key={ingredient}>
               {index + 1}. {ingredient}
-            </h3>
+            </h4>
           ))}
         </Ingredients>
-        <AdditionalInfo></AdditionalInfo>
+        <AdditionalInfo>
+          <p>Cooking time: {recipeData?.cookingTime}</p>
+          <p>Cuisine: {recipeData?.cuisineType}</p>
+          <p>Dish type: {recipeData?.dishType}</p>
+        </AdditionalInfo>
       </InfoWrapper>
     </ModalContainer>
   );

@@ -23,9 +23,11 @@ const RecipesList = () => {
       id: uuidv4(),
       label: recipe.label,
       image: recipe.image,
-      cookingTime: recipe.totalTime,
-      dishTypes: recipe.dishType,
+      cookingTime:
+        recipe.totalTime > 0 ? `${recipe.totalTime} minutes` : "Not available",
+      dishType: recipe.dishType ? recipe.dishType[0] : "Not available",
       ingredients: recipe.ingredientLines,
+      cuisineType: recipe.cuisineType,
     }));
 
     return mappedResult;
@@ -82,7 +84,7 @@ const RecipesList = () => {
           title={recipes[key].label}
           image={recipes[key].image}
           cookingTime={recipes[key].cookingTime}
-          dishTypes={recipes[key].dishTypes}
+          dishType={recipes[key].dishType}
           recipeData={setModalData}
         />
       ))}

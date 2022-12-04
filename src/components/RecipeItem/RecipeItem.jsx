@@ -15,19 +15,12 @@ const RecipeItem = ({
   title,
   image = defaultPic,
   cookingTime,
-  dishTypes = [],
+  dishType,
   recipeData,
 }) => {
-  let cookingTimeStr = "";
-  const [dish = "Not available"] = dishTypes;
-
   const handleClick = () => {
     recipeData(id);
   };
-
-  cookingTime === 0
-    ? (cookingTimeStr = "Not available")
-    : (cookingTimeStr = `${cookingTime} minutes`);
 
   return (
     <ListItem onClick={handleClick}>
@@ -37,11 +30,11 @@ const RecipeItem = ({
 
       <ItemInfo>
         <InfoIcon src={dishIcon} alt="dishIcon" />
-        <InfoText>Dish type: {dish}</InfoText>
+        <InfoText>Dish type: {dishType}</InfoText>
       </ItemInfo>
       <ItemInfo>
         <InfoIcon src={clockIcon} alt="clockIcon" />
-        <InfoText>Cooking time: {cookingTimeStr}</InfoText>
+        <InfoText>Cooking time: {cookingTime}</InfoText>
       </ItemInfo>
     </ListItem>
   );
