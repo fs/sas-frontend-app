@@ -4,41 +4,45 @@ import fetchRecipes from "../../api/fetchRecipes";
 
 import List from "./styles";
 
-const RecipesList = () => {
-  const [recipes, setRecipes] = useState([]);
+const RecipesList = (props) => {
+  const [cards, setCards] = useState([]);
   const [error, setError] = useState(null);
 
+  const { recipeList } = props;
+
+  const createCards = async (cardRecipeList = []) => {
+    const recipes =
+      cardRecipeList.length > 0 ? cardRecipeList : await fetchRecipes();
+
+    return recipes.map(({ recipe }) => (
+      <RecipeItem
+        key={recipe.label}
+        title={recipe.label}
+        image={recipe.image}
+        cookingTime={recipe.totalTime}
+        dishTypes={recipe.dishType}
+      />
+    ));
+  };
+
   useEffect(() => {
-    const fetchRecipesList = async () => {
+    const updateCards = async () => {
       try {
-        const recipesData = await fetchRecipes();
-        setRecipes(recipesData);
+        setCards(await createCards(recipeList));
       } catch (err) {
         console.error("I failed", err);
         setError(err);
       }
     };
 
-    fetchRecipesList();
-  }, []);
+    updateCards();
+  }, [recipeList]);
 
   if (error) {
-    return <div>Ошибка получения данных</div>;
+    return <div>Ошибка получения данных:</div>;
   }
 
-  return (
-    <List>
-      {recipes.map(({ recipe }) => (
-        <RecipeItem
-          key={recipe.label}
-          title={recipe.label}
-          image={recipe.image}
-          cookingTime={recipe.totalTime}
-          dishTypes={recipe.dishType}
-        />
-      ))}
-    </List>
-  );
+  return <List>{cards}</List>;
 };
 
 export default RecipesList;
