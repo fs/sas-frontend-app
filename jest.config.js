@@ -5,9 +5,9 @@ module.exports = {
   testEnvironment: "jsdom",
   roots: ["<rootDir>"],
   modulePaths: ["<rootDir>"],
-  testPathIgnorePatterns: ["</node_modules/"],
+  testPathIgnorePatterns: ["/node_modules/"],
   transform: {
-    "\\.js$": "<rootDir>/node_modules/babel-jest",
+    "^.+\\.[t|j]sx?$": "/node_modules/babel-jest",
   },
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
 };
