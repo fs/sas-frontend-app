@@ -1,31 +1,46 @@
 import fetchRecipes from "./fetchRecipes";
 import apiInstance from "./apiInstance";
 
+import { mockRecipesList } from "../__mocks__/mockRecipes";
+
 jest.mock("./apiInstance");
 
 describe("fetchRecipes", () => {
-  test("should fetch recipes", () => {
+  test("should fetch recipes", async () => {
     // Arrange
-    const hits = [1, 2, 3];
+    const expectedRecipes = mockRecipesList;
+    const expectedIngredients = "potato";
+    const expectedCalories = "3400";
+
+    const params = {
+      app_id: process.env.REACT_APP_RECIPES_APP_ID,
+      app_key: process.env.REACT_APP_RECIPES_APP_KEY,
+      type: "public",
+      random: true,
+      diet: "low-fat",
+      q: expectedIngredients,
+      calories: `0-${expectedCalories}`,
+    };
 
     const expectedResponse = {
       data: {
-        hits,
+        hits: expectedRecipes,
       },
     };
-    const mockApiInstance = jest.fn(
+    const mockGetRaquest = jest.fn(
       () =>
         new Promise((resolve) => {
           resolve(expectedResponse);
         }),
     );
-    apiInstance.mockImplementation(mockApiInstance);
+    apiInstance.get.mockImplementation(mockGetRaquest);
 
     // Act
-    const result = fetchRecipes();
+    const result = await fetchRecipes(expectedIngredients, expectedCalories);
 
     // Assert
-    expect(apiInstance).toHaveBeenCalledTimes(1);
-    expect(result).toEqual(hits);
+    expect(apiInstance.get).toHaveBeenCalledTimes(1);
+    expect(apiInstance.get).toHaveBeenCalledWith("/recipes/v2", { params });
+    expect(result).toEqual(expectedRecipes);
   });
 });
