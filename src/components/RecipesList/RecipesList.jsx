@@ -25,7 +25,6 @@ const RecipesList = () => {
   if (error) {
     return <div>Ошибка получения данных</div>;
   }
-
   return (
     <List>
       {recipes.map(({ recipe }) => (
