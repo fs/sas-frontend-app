@@ -23,7 +23,7 @@ const RecipeItem = ({
   };
 
   return (
-    <ListItem onClick={handleClick}>
+    <ListItem onClick={handleClick} data-testid="test-recipe-item">
       <ItemImage src={image} alt="" />
 
       <ItemTitle>{title}</ItemTitle>
