@@ -1,29 +1,26 @@
 import { useState } from "react";
-import fetchRecipes from "../../api/fetchRecipes";
 import { SearchDiv, SearchTextInput, SearchInput } from "./styles";
 
 const placeholderCaloriesLimit = 2000;
 const placeholderIngredientList = "Chicken pineapple cream cheese";
 
-const SearchBox = (props) => {
-  const { onSubmit } = props;
-
+const SearchBox = ({ onSubmit }) => {
   const [calories, setCalories] = useState("");
-  const [ingredientText, setIngredient] = useState("");
+  const [ingredients, setIngredients] = useState("");
 
-  const submit = async (event) => {
+  const submitForm = async (event) => {
     event.preventDefault();
 
-    onSubmit(await fetchRecipes({ ingredients: ingredientText, calories }));
+    onSubmit({ ingredients, calories });
   };
 
   return (
     <SearchDiv>
-      <form onSubmit={submit}>
+      <form onSubmit={submitForm}>
         <SearchTextInput
-          value={ingredientText}
+          value={ingredients}
           placeholder={placeholderIngredientList}
-          onInput={(e) => setIngredient(e.target.value)}
+          onInput={(e) => setIngredients(e.target.value)}
           width={400}
         />
         <SearchTextInput

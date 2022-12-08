@@ -6,19 +6,36 @@ import fetchRecipes from "../../api/fetchRecipes";
 
 const MainComponent = () => {
   const [recipes, setRecipes] = useState([]);
+  const [error, setError] = useState(false);
+
+  const getRecipes = async ({ ingredients, calories }) => {
+    try {
+      const recipesResult = await fetchRecipes({ ingredients, calories });
+      setRecipes(recipesResult);
+    } catch (err) {
+      setError(true);
+      setRecipes([]);
+    }
+  };
 
   useEffect(() => {
-    const initializeWithRandomRecipes = async () => {
-      setRecipes(await fetchRecipes({}));
-    };
-
-    initializeWithRandomRecipes();
+    getRecipes({});
   }, []);
+
+  const onSubmit = async ({ ingredients, calories }) => {
+    setError(false);
+    getRecipes({ ingredients, calories });
+  };
 
   return (
     <MainDiv>
-      <SearchBox onSubmit={setRecipes} />
-      <RecipesList recipes={recipes} />
+      <SearchBox onSubmit={onSubmit} />
+
+      {error ? (
+        <div>Ошибка получения данных</div>
+      ) : (
+        <RecipesList recipes={recipes} />
+      )}
     </MainDiv>
   );
 };

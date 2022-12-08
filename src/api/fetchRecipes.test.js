@@ -36,7 +36,10 @@ describe("fetchRecipes", () => {
     apiInstance.get.mockImplementation(mockGetRaquest);
 
     // Act
-    const result = await fetchRecipes(expectedIngredients, expectedCalories);
+    const result = await fetchRecipes({
+      ingredients: expectedIngredients,
+      calories: expectedCalories,
+    });
 
     // Assert
     expect(apiInstance.get).toHaveBeenCalledTimes(1);

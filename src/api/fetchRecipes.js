@@ -5,7 +5,7 @@ const apiKey = process.env.REACT_APP_RECIPES_APP_KEY;
 
 const recipesUrl = "/recipes/v2";
 
-const fetchRecipes = async ({ ingredients, calories = 5000 }) => {
+const fetchRecipes = async ({ ingredients, calories = 5000 } = {}) => {
   const params = {
     app_id: apiID,
     app_key: apiKey,
