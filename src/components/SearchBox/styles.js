@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 const SearchDiv = styled.div`
-  width: 100%;
+  width: 70%;
   height: 39px;
   display: flex;
+  justify-content: center;
 `;
 
 const SearchTextInput = styled.input`
