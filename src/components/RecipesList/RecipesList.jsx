@@ -13,7 +13,6 @@ const RecipesList = ({ recipes }) => {
           dishTypes={recipe.dishType}
         />
       ))}
-      ;
     </List>
   );
 };
