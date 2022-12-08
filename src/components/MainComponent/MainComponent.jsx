@@ -4,33 +4,38 @@ import SearchBox from "../SearchBox";
 import MainDiv from "./styles";
 import fetchRecipes from "../../api/fetchRecipes";
 
+const search = async ({ ingredients = "", caloriesLimit = 0 }) => {
+  try {
+    if (ingredients.length < 1 || caloriesLimit < 1) return [];
+
+    return await fetchRecipes(ingredients, caloriesLimit);
+  } catch {
+    return [];
+  }
+};
+
 const MainComponent = () => {
-  const search = async (ingredient = "", caloriesLimit = 0) => {
-    const trimmedIngredients = ingredient.replaceAll(",", "");
-
-    if (ingredient.length < 1 || caloriesLimit < 1) return [];
-
-    const result = await fetchRecipes(trimmedIngredients, caloriesLimit);
-
-    return result;
-  };
-
   const [ingredientText, setIngredient] = useState("");
   const [calories, setCalories] = useState("");
   const [recipes, setRecipes] = useState([]);
-  const [recipeList, setRecipeList] = useState(<RecipesList recipes={[]} />);
 
   const submit = async (event) => {
     event.preventDefault();
-    const result = await search(ingredientText, calories);
+    const result = await search({
+      ingredient: ingredientText,
+      caloriesLimit: calories,
+    });
 
     setRecipes(result);
   };
 
   useEffect(() => {
-    const list = <RecipesList recipeList={recipes} />;
-    setRecipeList(list);
-  }, [recipes]);
+    const initializeWithRandomRecipes = async () => {
+      setRecipes(await fetchRecipes());
+    };
+
+    initializeWithRandomRecipes();
+  }, []);
 
   return (
     <MainDiv>
@@ -39,7 +44,7 @@ const MainComponent = () => {
         setCalories={setCalories}
         setIngredient={setIngredient}
       />
-      {recipeList}
+      <RecipesList recipes={recipes} />
     </MainDiv>
   );
 };
