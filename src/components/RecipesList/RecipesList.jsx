@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import RecipeItem from "../RecipeItem";
 import fetchRecipes from "../../api/fetchRecipes";
 import ModalWindow from "../ModalWindow";
-import RecipeItemModal from "../RecipeItemModal";
+import RecipeModalContent from "../RecipeModalContent";
 
 import List from "./styles";
 
@@ -74,7 +74,7 @@ const RecipesList = () => {
         showModal={showModal}
         customOnClick={() => setShowModal(false)}
       >
-        <RecipeItemModal
+        <RecipeModalContent
           recipeData={recipes[recipeID]}
           customOnClick={() => setShowModal(false)}
         />

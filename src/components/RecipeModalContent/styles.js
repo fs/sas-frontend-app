@@ -1,26 +1,16 @@
 import styled from "styled-components";
 
-export const ModalContainer = styled.div`
-  width: 620px;
-  background-color: #fdebe7;
-  border-radius: 5%;
-  padding: 25px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-height: 90vh;
-
+export const ReceiptContent = styled.div`
+  width: 100%;
   overflow: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
   ::-webkit-scrollbar {
     display: none;
   }
-
-  h1 {
-    text-align: center;
-  }
 `;
+
+export const ReceiptInfo = styled.div``;
 
 export const ImageWrapper = styled.div`
   box-sizing: border-box;
@@ -34,18 +24,6 @@ export const ModalImage = styled.img`
   width: 100%;
   object-fit: cover;
   border-radius: 5%;
-`;
-
-export const CloseButton = styled.a`
-  height: 30px;
-  width: 30px;
-  cursor: pointer;
-`;
-
-export const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: end;
-  width: 100%;
 `;
 
 export const InfoWrapper = styled.div`
