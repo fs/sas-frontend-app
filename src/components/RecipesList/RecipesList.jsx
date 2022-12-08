@@ -1,15 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+
 import RecipeItem from "../RecipeItem";
-import fetchRecipes from "../../api/fetchRecipes";
 import ModalWindow from "../ModalWindow";
 import RecipeModalContent from "../RecipeModalContent";
 
 import List from "./styles";
 
-const RecipesList = () => {
-  const [recipes, setRecipes] = useState([]);
-  const [error, setError] = useState(null);
+const RecipesList = ({ recipes }) => {
   const [showModal, setShowModal] = useState(false);
   const [recipeID, setRecipeID] = useState(null);
 
@@ -47,26 +45,8 @@ const RecipesList = () => {
     return reducedResult;
   };
 
-  useEffect(() => {
-    const fetchRecipesList = async () => {
-      try {
-        const recipesData = await fetchRecipes();
-        const recipesList = mapApiResult(recipesData);
-        const reducedRecipesList = reduceMappedResult(recipesList);
+  const reducedRecipesList = reduceMappedResult(mapApiResult(recipes));
 
-        setRecipes(reducedRecipesList);
-      } catch (err) {
-        console.error("I failed", err);
-        setError(err);
-      }
-    };
-
-    fetchRecipesList();
-  }, []);
-
-  if (error) {
-    return <div>Ошибка получения данных</div>;
-  }
   return (
     <List>
       <ModalWindow
@@ -74,18 +54,18 @@ const RecipesList = () => {
         customOnClick={() => setShowModal(false)}
       >
         <RecipeModalContent
-          recipeData={recipes[recipeID]}
+          recipeData={reducedRecipesList[recipeID]}
           customOnClick={() => setShowModal(false)}
         />
       </ModalWindow>
-      {Object.keys(recipes).map((key) => (
+      {Object.keys(reducedRecipesList).map((key) => (
         <RecipeItem
           key={key}
           id={key}
-          title={recipes[key].label}
-          image={recipes[key].image}
-          cookingTime={recipes[key].cookingTime}
-          dishType={recipes[key].dishType}
+          title={reducedRecipesList[key].label}
+          image={reducedRecipesList[key].image}
+          cookingTime={reducedRecipesList[key].cookingTime}
+          dishType={reducedRecipesList[key].dishType}
           recipeData={setModalData}
         />
       ))}

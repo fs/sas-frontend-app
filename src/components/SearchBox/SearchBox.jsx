@@ -1,47 +1,36 @@
 import { useState } from "react";
 import { SearchDiv, SearchTextInput, SearchInput } from "./styles";
-import fetchRecipes from "../../api/fetchRecipes";
 
 const placeholderCaloriesLimit = 2000;
+const placeholderIngredientList = "Chicken pineapple cream cheese";
 
-const placeholderIngredientList = "Chicken salmon cream cheese";
-
-const search = async (ingredient = "", caloriesLimit = 0) => {
-  const trimmedIngredients = ingredient.replaceAll(",", "");
-
-  const res = await fetchRecipes(trimmedIngredients, caloriesLimit);
-
-  if (ingredient.length < 1 || caloriesLimit < 1) return;
-
-  // TODO: remove logging
-  // eslint-disable-next-line no-console
-  console.log(res);
-};
-
-const SearchBox = () => {
-  const [ingredientText, setIngredient] = useState("");
+const SearchBox = ({ onSubmit }) => {
   const [calories, setCalories] = useState("");
+  const [ingredients, setIngredients] = useState("");
 
-  const submit = (event) => {
+  const submitForm = async (event) => {
     event.preventDefault();
-    search(ingredientText, calories);
+
+    onSubmit({ ingredients, calories });
   };
 
   return (
     <SearchDiv>
-      <form onSubmit={submit}>
+      <form onSubmit={submitForm} data-testid="test-form">
         <SearchTextInput
-          value={ingredientText}
+          value={ingredients}
           placeholder={placeholderIngredientList}
-          onInput={(e) => setIngredient(e.target.value)}
+          onChange={(e) => setIngredients(e.target.value)}
           width={400}
+          data-testid="test-input-ingredients"
         />
         <SearchTextInput
           value={calories}
           placeholder={`${placeholderCaloriesLimit} kcal`}
-          onInput={(e) => setCalories(e.target.value)}
+          onChange={(e) => setCalories(e.target.value)}
           width={190}
           type="number"
+          data-testid="test-input-calories"
         />
         <SearchInput type="submit" />
       </form>

@@ -1,7 +1,7 @@
-import RecipesList from "./components/RecipesList";
+import MainComponent from "./components/MainComponent/MainComponent";
 
 const App = () => {
-  return <RecipesList />;
+  return <MainComponent />;
 };
 
 export default App;
