@@ -32,7 +32,7 @@ const MainComponent = () => {
       <SearchBox onSubmit={onSubmit} />
 
       {error ? (
-        <div>Ошибка получения данных</div>
+        <div data-testid="error-container">Ошибка получения данных</div>
       ) : (
         <RecipesList recipes={recipes} />
       )}
