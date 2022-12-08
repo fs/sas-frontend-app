@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 
 import RecipeItem from "../RecipeItem";
 import ModalWindow from "../ModalWindow";
@@ -16,56 +15,22 @@ const RecipesList = ({ recipes }) => {
     setShowModal(true);
   };
 
-  const mapApiResult = (result) => {
-    const mappedResult = result.map(({ recipe }) => ({
-      id: uuidv4(),
-      label: recipe.label,
-      image: recipe.image,
-      cookingTime:
-        recipe.totalTime > 0 ? `${recipe.totalTime} minutes` : "Not available",
-      dishType: recipe.dishType ? recipe.dishType[0] : "Not available",
-      ingredients: recipe.ingredientLines,
-      cuisineType: recipe.cuisineType,
-      nutrients: recipe.totalNutrients,
-      totalWeight: recipe.totalWeight,
-    }));
-
-    return mappedResult;
-  };
-
-  const reduceMappedResult = (mappedResult) => {
-    const reducedResult = mappedResult.reduce((newObj, objInArray) => {
-      const { id, ...rest } = objInArray;
-      return {
-        ...newObj,
-        [objInArray.id]: rest,
-      };
-    }, {});
-
-    return reducedResult;
-  };
-
-  const reducedRecipesList = reduceMappedResult(mapApiResult(recipes));
-
   return (
     <List>
       <ModalWindow
         showModal={showModal}
         customOnClick={() => setShowModal(false)}
       >
-        <RecipeModalContent
-          recipeData={reducedRecipesList[recipeID]}
-          customOnClick={() => setShowModal(false)}
-        />
+        <RecipeModalContent recipeData={recipes[recipeID]} />
       </ModalWindow>
-      {Object.keys(reducedRecipesList).map((key) => (
+      {Object.keys(recipes).map((key) => (
         <RecipeItem
           key={key}
           id={key}
-          title={reducedRecipesList[key].label}
-          image={reducedRecipesList[key].image}
-          cookingTime={reducedRecipesList[key].cookingTime}
-          dishType={reducedRecipesList[key].dishType}
+          title={recipes[key].label}
+          image={recipes[key].image}
+          cookingTime={recipes[key].cookingTime}
+          dishType={recipes[key].dishType}
           recipeData={setModalData}
         />
       ))}
