@@ -1,4 +1,7 @@
 import { useState } from "react";
+import CaloriesIcon from "../../icons/caloriesIcon.svg";
+import DishIcon from "../../icons/dishIcon.svg";
+import ValidationMessage from "../ValidationMessage";
 import { SearchDiv, SearchTextInput, SearchInput } from "./styles";
 
 const placeholderCaloriesLimit = 2000;
@@ -33,6 +36,14 @@ const SearchBox = ({ onSubmit }) => {
           data-testid="test-input-calories"
         />
         <SearchInput type="submit" />
+        <ValidationMessage
+          text="Please enter a list of ingredients (whitespace-separated)"
+          src={DishIcon}
+        />
+        <ValidationMessage
+          text="Your calorie limit needs to be realistic. Maybe 1500 kcal per day?"
+          src={CaloriesIcon}
+        />
       </form>
     </SearchDiv>
   );
