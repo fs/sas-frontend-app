@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SearchDiv, SearchTextInput, SearchInput } from "./styles";
+import { SearchDiv, SearchTextInput, SearchInput, SearchForm } from "./styles";
 
 const placeholderCaloriesLimit = 2000;
 const placeholderIngredientList = "Chicken pineapple cream cheese";
@@ -16,7 +16,7 @@ const SearchBox = ({ onSubmit }) => {
 
   return (
     <SearchDiv>
-      <form onSubmit={submitForm} data-testid="test-form">
+      <SearchForm onSubmit={submitForm} data-testid="test-form">
         <SearchTextInput
           value={ingredients}
           placeholder={placeholderIngredientList}
@@ -33,7 +33,7 @@ const SearchBox = ({ onSubmit }) => {
           data-testid="test-input-calories"
         />
         <SearchInput type="submit" />
-      </form>
+      </SearchForm>
     </SearchDiv>
   );
 };
