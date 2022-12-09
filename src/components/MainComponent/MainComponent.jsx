@@ -8,6 +8,7 @@ import fetchRecipes from "../../api/fetchRecipes";
 const MainComponent = () => {
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const mapApiResult = (result) => {
     const mappedResult = result.map(({ recipe }) => ({
@@ -38,12 +39,11 @@ const MainComponent = () => {
     return reducedResult;
   };
 
-  const reducedRecipesList = reduceMappedResult(mapApiResult(recipes));
-
   const getRecipes = async ({ ingredients, calories }) => {
     try {
       const recipesResult = await fetchRecipes({ ingredients, calories });
-      setRecipes(recipesResult);
+      const mappedRecipes = reduceMappedResult(mapApiResult(recipesResult));
+      setRecipes(mappedRecipes);
     } catch (err) {
       setError(true);
       setRecipes([]);
@@ -60,13 +60,17 @@ const MainComponent = () => {
   };
 
   return (
-    <MainDiv>
+    <MainDiv showModal={showModal}>
       <SearchBox onSubmit={onSubmit} />
 
       {error ? (
         <div data-testid="error-container">Ошибка получения данных</div>
       ) : (
-        <RecipesList recipes={reducedRecipesList} />
+        <RecipesList
+          recipes={recipes}
+          showModal={showModal}
+          setShowModal={setShowModal}
+        />
       )}
     </MainDiv>
   );
