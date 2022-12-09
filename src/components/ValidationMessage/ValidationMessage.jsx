@@ -1,15 +1,12 @@
-import { useState } from "react";
 import { MessageDiv, Icon } from "./styles";
 
-const ValidationMessage = ({ text, src }) => {
-  const [visible] = useState(false);
-
-  return visible ? (
+const ValidationMessage = ({ text, icon }) => {
+  return (
     <MessageDiv>
-      <Icon src={src} />
+      <Icon src={icon} />
       <p>{text}</p>
     </MessageDiv>
-  ) : null;
+  );
 };
 
 export default ValidationMessage;

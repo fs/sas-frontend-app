@@ -7,14 +7,38 @@ import { SearchDiv, SearchTextInput, SearchInput } from "./styles";
 const placeholderCaloriesLimit = 2000;
 const placeholderIngredientList = "Chicken pineapple cream cheese";
 
-const SearchBox = ({ onSubmit }) => {
+const SearchBox = ({ onSubmit, validationErrors }) => {
   const [calories, setCalories] = useState("");
   const [ingredients, setIngredients] = useState("");
+
+  const validate = () => {
+    const result = { errors: [], valid: true };
+
+    if (calories < 1) {
+      const error = {
+        message: "Please enter a realistic calories range",
+        icon: CaloriesIcon,
+      };
+      result.errors.push(error);
+      result.valid = false;
+    }
+
+    if (!ingredients || ingredients.length < 2) {
+      const error = {
+        message: "Please enter a list of ingredients",
+        icon: DishIcon,
+      };
+      result.errors.push(error);
+      result.valid = false;
+    }
+
+    return result;
+  };
 
   const submitForm = async (event) => {
     event.preventDefault();
 
-    onSubmit({ ingredients, calories });
+    onSubmit({ ingredients, calories, validationResult: validate() });
   };
 
   return (
@@ -36,14 +60,10 @@ const SearchBox = ({ onSubmit }) => {
           data-testid="test-input-calories"
         />
         <SearchInput type="submit" />
-        <ValidationMessage
-          text="Please enter a list of ingredients (whitespace-separated)"
-          src={DishIcon}
-        />
-        <ValidationMessage
-          text="Your calorie limit needs to be realistic. Maybe 1500 kcal per day?"
-          src={CaloriesIcon}
-        />
+
+        {validationErrors.map(({ message, icon }) => (
+          <ValidationMessage key={message} text={message} icon={icon} />
+        ))}
       </form>
     </SearchDiv>
   );

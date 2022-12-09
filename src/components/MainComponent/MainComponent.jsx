@@ -7,6 +7,7 @@ import fetchRecipes from "../../api/fetchRecipes";
 const MainComponent = () => {
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(false);
+  const [validationErrors, setValidationErrors] = useState([]);
 
   const getRecipes = async ({ ingredients, calories }) => {
     try {
@@ -22,14 +23,18 @@ const MainComponent = () => {
     getRecipes({});
   }, []);
 
-  const onSubmit = async ({ ingredients, calories }) => {
+  const onSubmit = async ({ ingredients, calories, validationResult }) => {
     setError(false);
-    getRecipes({ ingredients, calories });
+    if (validationResult.valid) {
+      getRecipes({ ingredients, calories });
+    } else {
+      setValidationErrors(validationResult.errors);
+    }
   };
 
   return (
     <MainDiv>
-      <SearchBox onSubmit={onSubmit} />
+      <SearchBox onSubmit={onSubmit} validationErrors={validationErrors} />
 
       {error ? (
         <div data-testid="error-container">Ошибка получения данных</div>
