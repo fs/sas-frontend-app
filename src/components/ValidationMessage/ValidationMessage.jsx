@@ -9,9 +9,7 @@ const ValidationMessage = ({ text, src }) => {
       <Icon src={src} />
       <p>{text}</p>
     </MessageDiv>
-  ) : (
-    {}
-  );
+  ) : null;
 };
 
 export default ValidationMessage;
