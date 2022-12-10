@@ -19,7 +19,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -m 'Automatically update gh-pages [skip ci]'",
+    "deploy": "./node_modules/gh-pages/bin/gh-pages-clean.js && gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
