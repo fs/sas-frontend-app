@@ -24,7 +24,7 @@ const RecipeItem = ({
     : (cookingTimeStr = `${cookingTime} minutes`);
 
   return (
-    <ListItem>
+    <ListItem data-testid="test-recipe-item">
       <ItemImage src={image} alt="" />
 
       <ItemTitle>{title}</ItemTitle>
