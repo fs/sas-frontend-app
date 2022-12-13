@@ -52,7 +52,7 @@ describe("SearchBox", () => {
     const errors = screen.getAllByTestId("test-validation-message");
 
     // Assert
-    expect(errors.length).toBeGreaterThan(0);
+    expect(errors.length).toBe(2);
   });
 
   test("should not create any validation errors", async () => {
@@ -60,7 +60,9 @@ describe("SearchBox", () => {
     const expectedIngredients = "Peach cream";
     const expectedCalories = "2000";
 
-    render(<SearchBox />);
+    const mockOnSubmit = jest.fn();
+
+    render(<SearchBox onSubmit={mockOnSubmit} />);
     const form = screen.getByTestId("test-form");
     const inputIngredients = screen.getByTestId("test-input-ingredients");
     const inputCalories = screen.getByTestId("test-input-calories");
@@ -73,9 +75,16 @@ describe("SearchBox", () => {
 
     fireEvent.submit(form);
 
-    const errors = screen.getAllByTestId("test-validation-message");
+    const caloriesError = screen.queryByText(
+      "Please enter a realistic range of calories",
+    );
+
+    const ingredientsError = screen.queryByText(
+      "Please enter a list of ingredients",
+    );
 
     // Assert
-    expect(errors.length).toBe(0);
+    expect(caloriesError).toBeNull();
+    expect(ingredientsError).toBeNull();
   });
 });
