@@ -7,6 +7,7 @@ import {
   SearchInput,
   ValidationBox,
   VerticalDiv,
+  SearchForm
 } from "./styles";
 import ValidationMessage from "../ValidationMessage";
 
