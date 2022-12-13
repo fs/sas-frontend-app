@@ -14,6 +14,7 @@ const MessageDiv = styled.div`
   justify-content: start;
   align-items: center;
   width: 50%;
+  margin-top: 1px;
 
   font-family: "Inter";
   font-weight: 400;
