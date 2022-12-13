@@ -1,13 +1,12 @@
 import { useState } from "react";
 import CaloriesIcon from "../../icons/caloriesIcon.svg";
 import DishIcon from "../../icons/dishIcon.svg";
-import ValidationMessage from "../ValidationMessage";
 import { SearchDiv, SearchTextInput, SearchInput } from "./styles";
 
 const placeholderCaloriesLimit = 2000;
 const placeholderIngredientList = "Chicken pineapple cream cheese";
 
-const SearchBox = ({ onSubmit, validationErrors }) => {
+const SearchBox = ({ onSubmit }) => {
   const [calories, setCalories] = useState("");
   const [ingredients, setIngredients] = useState("");
 
@@ -60,10 +59,6 @@ const SearchBox = ({ onSubmit, validationErrors }) => {
           data-testid="test-input-calories"
         />
         <SearchInput type="submit" />
-
-        {validationErrors.map(({ message, icon }) => (
-          <ValidationMessage key={message} text={message} icon={icon} />
-        ))}
       </form>
     </SearchDiv>
   );

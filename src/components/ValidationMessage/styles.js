@@ -13,6 +13,7 @@ const MessageDiv = styled.div`
   height: 40px;
   justify-content: start;
   align-items: center;
+  width: 50%;
 
   font-family: "Inter";
   font-weight: 400;

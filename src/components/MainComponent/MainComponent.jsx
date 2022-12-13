@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import RecipesList from "../RecipesList";
 import SearchBox from "../SearchBox";
-import MainDiv from "./styles";
+import { MainDiv, ValidationBox } from "./styles";
 import fetchRecipes from "../../api/fetchRecipes";
+import ValidationMessage from "../ValidationMessage";
 
 const MainComponent = () => {
   const [recipes, setRecipes] = useState([]);
@@ -34,7 +35,13 @@ const MainComponent = () => {
 
   return (
     <MainDiv>
-      <SearchBox onSubmit={onSubmit} validationErrors={validationErrors} />
+      <SearchBox onSubmit={onSubmit} />
+
+      <ValidationBox>
+        {validationErrors.map(({ message, icon }) => (
+          <ValidationMessage key={message} text={message} icon={icon} />
+        ))}
+      </ValidationBox>
 
       {error ? (
         <div data-testid="error-container">Ошибка получения данных</div>
