@@ -83,4 +83,11 @@ const ValidationBox = styled.div`
   margin: 5px;
 `;
 
-export { VerticalDiv, SearchDiv, SearchTextInput, SearchInput, ValidationBox, SearchForm };
+export {
+  VerticalDiv,
+  SearchDiv,
+  SearchTextInput,
+  SearchInput,
+  ValidationBox,
+  SearchForm,
+};

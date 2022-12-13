@@ -7,7 +7,7 @@ import {
   SearchInput,
   ValidationBox,
   VerticalDiv,
-  SearchForm
+  SearchForm,
 } from "./styles";
 import ValidationMessage from "../ValidationMessage";
 
@@ -58,7 +58,7 @@ const SearchBox = ({ onSubmit }) => {
   return (
     <VerticalDiv>
       <SearchDiv>
-        <form onSubmit={submitForm} data-testid="test-form">
+        <SearchForm onSubmit={submitForm} data-testid="test-form">
           <SearchTextInput
             value={ingredients}
             placeholder={placeholderIngredientList}
@@ -75,7 +75,7 @@ const SearchBox = ({ onSubmit }) => {
             data-testid="test-input-calories"
           />
           <SearchInput type="submit" />
-        </form>
+        </SearchForm>
       </SearchDiv>
 
       <ValidationBox>
