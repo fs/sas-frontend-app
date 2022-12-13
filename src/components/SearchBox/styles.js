@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+const VerticalDiv = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const SearchDiv = styled.div`
   width: 70%;
   height: 39px;
@@ -43,4 +50,12 @@ const SearchInput = styled.input`
   cursor: pointer;
 `;
 
-export { SearchDiv, SearchTextInput, SearchInput };
+const ValidationBox = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+`;
+
+export { VerticalDiv, SearchDiv, SearchTextInput, SearchInput, ValidationBox };

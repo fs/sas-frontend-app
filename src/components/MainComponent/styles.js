@@ -7,12 +7,4 @@ const MainDiv = styled.div`
   align-items: center;
 `;
 
-const ValidationBox = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 5px;
-`;
-
-export { MainDiv, ValidationBox };
+export default MainDiv;
