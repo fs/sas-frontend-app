@@ -6,8 +6,9 @@ import RecipeModalContent from "../RecipeModalContent";
 
 import List from "./styles";
 
-const RecipesList = ({ recipes, showModal, setShowModal }) => {
+const RecipesList = ({ recipes }) => {
   const [recipeID, setRecipeID] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   const setModalData = (productData) => {
     setRecipeID(productData);
