@@ -28,15 +28,12 @@ const RecipesList = ({ recipes }) => {
       <ModalWindow showModal={showModal} customOnClick={closeModal}>
         <RecipeModalContent recipeData={recipes[recipeID]} />
       </ModalWindow>
+
       {Object.keys(recipes).map((key) => (
         <RecipeItem
           key={key}
-          id={key}
-          title={recipes[key].label}
-          image={recipes[key].image}
-          cookingTime={recipes[key].cookingTime}
-          dishType={recipes[key].dishType}
-          recipeData={setModalData}
+          recipe={recipes[key]}
+          setModalData={setModalData}
         />
       ))}
     </List>

@@ -10,21 +10,16 @@ import defaultPic from "../../img/defaultPicture.png";
 import dishIcon from "../../icons/dishIcon.svg";
 import clockIcon from "../../icons/clockIcon.svg";
 
-const RecipeItem = ({
-  id,
-  title,
-  image = defaultPic,
-  cookingTime,
-  dishType,
-  recipeData,
-}) => {
+const RecipeItem = ({ recipe, setModalData }) => {
+  const { id, image = defaultPic, title, dishType, cookingTime } = recipe;
+
   const handleClick = () => {
-    recipeData(id);
+    setModalData(id);
   };
 
   return (
     <ListItem onClick={handleClick} data-testid="test-recipe-item">
-      <ItemImage src={image} alt="" />
+      <ItemImage src={image} alt={title} />
 
       <ItemTitle>{title}</ItemTitle>
 

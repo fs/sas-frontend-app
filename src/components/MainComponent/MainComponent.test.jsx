@@ -3,14 +3,14 @@ import { render, screen, waitFor } from "@testing-library/react";
 import fetchRecipes from "../../api/fetchRecipes";
 import MainComponent from "./MainComponent";
 
-import { mockRecipesList } from "../../__mocks__/mockRecipes";
+import { mockFormattedRecipes } from "../../__mocks__/mockRecipes";
 
 jest.mock("../../api/fetchRecipes");
 
 describe("MainComponent", () => {
   test("should call fetchRecipes on first render", async () => {
     // Arrange
-    const expectedResponse = mockRecipesList;
+    const expectedResponse = mockFormattedRecipes;
     const mockFetchRecipes = jest.fn(
       () =>
         new Promise((resolve) => {
