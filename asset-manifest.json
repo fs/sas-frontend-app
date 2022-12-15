@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/sas-frontend-app/static/css/main.e6c13ad2.css",
-    "main.js": "/sas-frontend-app/static/js/main.34fef20e.js",
+    "main.js": "/sas-frontend-app/static/js/main.7d462b3b.js",
     "static/media/defaultPicture.png": "/sas-frontend-app/static/media/defaultPicture.7ae37b5d951feb29b7a8.png",
     "static/media/dishIcon.svg": "/sas-frontend-app/static/media/dishIcon.73d171a32d80e380c15b2d7b4bf3af81.svg",
     "static/media/clockIcon.svg": "/sas-frontend-app/static/media/clockIcon.7027b4cd8a40dee9fca800241b10c172.svg",
     "index.html": "/sas-frontend-app/index.html",
     "main.e6c13ad2.css.map": "/sas-frontend-app/static/css/main.e6c13ad2.css.map",
-    "main.34fef20e.js.map": "/sas-frontend-app/static/js/main.34fef20e.js.map"
+    "main.7d462b3b.js.map": "/sas-frontend-app/static/js/main.7d462b3b.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.34fef20e.js"
+    "static/js/main.7d462b3b.js"
   ]
 }
