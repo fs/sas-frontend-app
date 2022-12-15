@@ -14,7 +14,7 @@ const ModalWindow = ({ showModal, customOnClick, children }) => {
     <Background showModal={showModal} onClick={customOnClick}>
       <Container onClick={(e) => e.stopPropagation()}>
         <ButtonWrapper>
-          <ButtonClose action={customOnClick} />
+          <ButtonClose onClick={customOnClick} />
         </ButtonWrapper>
         {children}
       </Container>

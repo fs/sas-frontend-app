@@ -1,9 +1,9 @@
 import ButtonStyle from "./styles";
 import closeButtonIcon from "../../../icons/closeButtonIcon.svg";
 
-const ButtonClose = ({ action }) => {
+const ButtonClose = ({ onClick }) => {
   return (
-    <ButtonStyle onClick={action}>
+    <ButtonStyle onClick={onClick}>
       <img src={closeButtonIcon} alt="closeButton" />
     </ButtonStyle>
   );
