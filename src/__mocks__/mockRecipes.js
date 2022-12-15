@@ -605,4 +605,23 @@ export const mockRecipe = {
   },
 };
 
+export const mockFormattedRecipes = {
+  111: {
+    id: 111,
+    label: mockRecipe.recipe.label,
+    image: mockRecipe.recipe.image,
+    cookingTime:
+      mockRecipe.recipe.totalTime > 0
+        ? `${mockRecipe.recipe.totalTime} minutes`
+        : "Not available",
+    dishType: mockRecipe.recipe.dishType
+      ? mockRecipe.recipe.dishType[0]
+      : "Not available",
+    ingredients: mockRecipe.recipe.ingredientLines,
+    cuisineType: mockRecipe.recipe.cuisineType,
+    nutrients: mockRecipe.recipe.totalNutrients,
+    totalWeight: mockRecipe.recipe.totalWeight,
+  },
+};
+
 export const mockRecipesList = [mockRecipe];

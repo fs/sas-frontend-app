@@ -11,6 +11,7 @@ const MainComponent = () => {
   const getRecipes = async ({ ingredients, calories }) => {
     try {
       const recipesResult = await fetchRecipes({ ingredients, calories });
+
       setRecipes(recipesResult);
     } catch (err) {
       setError(true);

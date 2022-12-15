@@ -1,16 +1,35 @@
+import { useState } from "react";
+
 import RecipeItem from "../RecipeItem";
+import ModalWindow from "../ModalWindow";
+import RecipeModalContent from "../RecipeModalContent";
+
 import List from "./styles";
 
 const RecipesList = ({ recipes }) => {
+  const [recipeID, setRecipeID] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
+  const setModalData = (productData) => {
+    setRecipeID(productData);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <List>
-      {recipes.map(({ recipe }) => (
+      <ModalWindow showModal={showModal} customOnClick={closeModal}>
+        <RecipeModalContent recipeData={recipes[recipeID]} />
+      </ModalWindow>
+
+      {Object.keys(recipes).map((key) => (
         <RecipeItem
-          key={recipe.label}
-          title={recipe.label}
-          image={recipe.image}
-          cookingTime={recipe.totalTime}
-          dishTypes={recipe.dishType}
+          key={key}
+          recipe={recipes[key]}
+          setModalData={setModalData}
         />
       ))}
     </List>

@@ -6,6 +6,7 @@ export const ListItem = styled.div`
   border-radius: 0.5rem;
   box-shadow: 0 0 3px #999;
   background-color: #e7f9fd;
+  cursor: pointer;
 `;
 
 export const ItemTitle = styled.h4`

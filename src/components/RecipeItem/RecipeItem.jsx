@@ -10,32 +10,26 @@ import defaultPic from "../../img/defaultPicture.png";
 import dishIcon from "../../icons/dishIcon.svg";
 import clockIcon from "../../icons/clockIcon.svg";
 
-const RecipeItem = ({
-  title,
-  image = defaultPic,
-  cookingTime,
-  dishTypes = [],
-}) => {
-  let cookingTimeStr = "";
-  const [dish = "Not available"] = dishTypes;
+const RecipeItem = ({ recipe, setModalData }) => {
+  const { id, image = defaultPic, label, dishType, cookingTime } = recipe;
 
-  cookingTime === 0
-    ? (cookingTimeStr = "Not available")
-    : (cookingTimeStr = `${cookingTime} minutes`);
+  const handleClick = () => {
+    setModalData(id);
+  };
 
   return (
-    <ListItem data-testid="test-recipe-item">
-      <ItemImage src={image} alt="" />
+    <ListItem onClick={handleClick} data-testid="test-recipe-item">
+      <ItemImage src={image} alt={label} />
 
-      <ItemTitle>{title}</ItemTitle>
+      <ItemTitle>{label}</ItemTitle>
 
       <ItemInfo>
         <InfoIcon src={dishIcon} alt="dishIcon" />
-        <InfoText>Dish type: {dish}</InfoText>
+        <InfoText>Dish type: {dishType}</InfoText>
       </ItemInfo>
       <ItemInfo>
         <InfoIcon src={clockIcon} alt="clockIcon" />
-        <InfoText>Cooking time: {cookingTimeStr}</InfoText>
+        <InfoText>Cooking time: {cookingTime}</InfoText>
       </ItemInfo>
     </ListItem>
   );
