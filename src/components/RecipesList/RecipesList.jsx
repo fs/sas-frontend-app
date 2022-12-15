@@ -13,14 +13,10 @@ const RecipesList = ({ recipes }) => {
   const setModalData = (productData) => {
     setRecipeID(productData);
     setShowModal(true);
-    document.body.style.height = "100vh";
-    document.body.style.overflow = "hidden";
   };
 
   const closeModal = () => {
     setShowModal(false);
-    document.body.style.height = "auto";
-    document.body.style.overflow = "auto";
   };
 
   return (
