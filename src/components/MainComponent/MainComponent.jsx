@@ -24,6 +24,7 @@ const MainComponent = () => {
 
   const onSubmit = async ({ ingredients, calories }) => {
     setError(false);
+
     getRecipes({ ingredients, calories });
   };
 
